@@ -250,3 +250,12 @@ body {
         gap: 1rem;
     }
 }
+
+.nav-logo {
+    text-decoration: none;
+    color: var(--text-main);
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+}
