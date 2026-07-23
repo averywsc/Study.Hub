@@ -22,8 +22,51 @@
             <p>Join or post a group.</p>
         </header>
 
+        <section class="timer-section">
+            <h2 class="resource-subheading">Study Timer</h2>
+            <div class="timer-box">
+    <div class="timer-display" id="timerDisplay">25:00</div>
+    <div class="timer-label" id="timerLabel">Focus Session</div>
+
+    <div class="timer-settings">
+        <label>
+            Focus (min)
+            <input type="number" id="focusInput" value="25" min="1" max="90">
+        </label>
+        <label>
+            Break (min)
+            <input type="number" id="breakInput" value="5" min="1" max="30">
+        </label>
+    </div>
+
+    <div class="timer-controls">
+        <button class="timer-btn timer-btn-primary" id="timerStartBtn">Start</button>
+        <button class="timer-btn" id="timerPauseBtn">Pause</button>
+        <button class="timer-btn" id="timerResetBtn">Reset</button>
+    </div>
+</div>
+
+<section class="prompt-section">
+    <h2 class="resource-subheading">Discussion Prompts</h2>
+    <div class="prompt-subject-select">
+        <label for="promptSubject">Choose a subject</label>
+        <select id="promptSubject">
+            <option value="math">Mathematics</option>
+            <option value="biology">Biology</option>
+            <option value="physics">Physics</option>
+            <option value="chemistry">Chemistry</option>
+            <option value="history">History</option>
+            <option value="geography">Geography</option>
+            <option value="economics">Economics</option>
+            <option value="english">English</option>
+        </select>
+    </div>
+    <div class="prompt-grid" id="promptGrid"></div>
+</section>
+        </section>
+
         <div class="placeholder-area">
-            <p>Group lists and forms will be added in sprint 3.</p>
+            <p>Group lists and forms will be added in sprint 4.</p>
         </div>
     </main>
 
