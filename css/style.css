@@ -17,6 +17,8 @@
     --accent-lit: #b0638c;
 }
 
+
+
 * {
     margin: 0;
     padding: 0;
@@ -496,3 +498,16 @@ body {
     font-size: 0.95rem;
     color: var(--text-main);
 }
+
+.back-btn {
+    display: inline-block;
+    margin: 1.5rem 5% 0;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.back-btn:hover {
+    color: var(--text-main);
+}
+

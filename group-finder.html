@@ -11,6 +11,7 @@
    <nav class="navbar">
     <a href="index.html" class="nav-logo">STUDENT HUB</a>
     <div class="nav-links">
+        <button id="themeToggle" class="theme-toggle">🌙</button>
         <a href="index.html" class="active">Home</a>
         <a href="resources.html">Resources</a>
         <a href="group-finder.html">Find a group</a>
@@ -28,16 +29,24 @@
     <div class="timer-display" id="timerDisplay">25:00</div>
     <div class="timer-label" id="timerLabel">Focus Session</div>
 
-    <div class="timer-settings">
-        <label>
-            Focus (min)
-            <input type="number" id="focusInput" value="25" min="1" max="90">
-        </label>
-        <label>
-            Break (min)
-            <input type="number" id="breakInput" value="5" min="1" max="30">
-        </label>
-    </div>
+   <div class="timer-settings">
+    <label>
+        Focus (min)
+        <input type="number" id="focusInput" value="25" min="0" max="90">
+    </label>
+    <label>
+        Focus (sec)
+        <input type="number" id="focusSecInput" value="0" min="0" max="59">
+    </label>
+    <label>
+        Break (min)
+        <input type="number" id="breakInput" value="5" min="0" max="30">
+    </label>
+    <label>
+        Break (sec)
+        <input type="number" id="breakSecInput" value="0" min="0" max="59">
+    </label>
+</div>
 
     <div class="timer-controls">
         <button class="timer-btn timer-btn-primary" id="timerStartBtn">Start</button>
