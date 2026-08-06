@@ -653,3 +653,14 @@ body.dark-mode .section-title {
         gap: 1rem;
     }
 }
+
+body.dark-mode .panel-resources h2,
+body.dark-mode .panel-finder h2,
+body.dark-mode .panel-resources p,
+body.dark-mode .panel-finder p,
+body.dark-mode .header-resources h1,
+body.dark-mode .header-finder h1,
+body.dark-mode .header-resources p,
+body.dark-mode .header-finder p {
+    color: var(--text-main);
+}
