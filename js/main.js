@@ -4,12 +4,22 @@ const timerStartBtn = document.getElementById('timerStartBtn');
 const timerPauseBtn = document.getElementById('timerPauseBtn');
 const timerResetBtn = document.getElementById('timerResetBtn');
 const focusInput = document.getElementById('focusInput');
+const focusSecInput = document.getElementById('focusSecInput');
 const breakInput = document.getElementById('breakInput');
+const breakSecInput = document.getElementById('breakSecInput');
 
 if (timerDisplay) {
     let secondsLeft = 25 * 60;
     let isBreak = false;
     let intervalId = null;
+
+    function getFocusSeconds() {
+        return (parseInt(focusInput.value) * 60) + parseInt(focusSecInput.value);
+    }
+
+    function getBreakSeconds() {
+        return (parseInt(breakInput.value) * 60) + parseInt(breakSecInput.value);
+    }
 
     function formatTime(seconds) {
         const mins = Math.floor(seconds / 60);
@@ -19,9 +29,7 @@ if (timerDisplay) {
 
     function updateDisplay() {
         timerDisplay.textContent = formatTime(secondsLeft);
-        timerLabel.textContent = isBreak
-            ? 'Break Time (' + breakInput.value + ' min)'
-            : 'Focus Session (' + focusInput.value + ' min)';
+        timerLabel.textContent = isBreak ? 'Break Time' : 'Focus Session';
     }
 
     function tick() {
@@ -30,18 +38,17 @@ if (timerDisplay) {
             updateDisplay();
         } else {
             isBreak = !isBreak;
-            secondsLeft = isBreak
-                ? parseInt(breakInput.value) * 60
-                : parseInt(focusInput.value) * 60;
+            secondsLeft = isBreak ? getBreakSeconds() : getFocusSeconds();
             updateDisplay();
             alert(isBreak ? 'Focus session done! Time for a break.' : 'Break over! Back to focus.');
         }
     }
 
+    const timerInputs = [focusInput, focusSecInput, breakInput, breakSecInput];
+
     timerStartBtn.addEventListener('click', function () {
         if (intervalId) return;
-        focusInput.disabled = true;
-        breakInput.disabled = true;
+        timerInputs.forEach(function (input) { input.disabled = true; });
         intervalId = setInterval(tick, 1000);
     });
 
@@ -53,26 +60,22 @@ if (timerDisplay) {
     timerResetBtn.addEventListener('click', function () {
         clearInterval(intervalId);
         intervalId = null;
-        focusInput.disabled = false;
-        breakInput.disabled = false;
+        timerInputs.forEach(function (input) { input.disabled = false; });
         isBreak = false;
-        secondsLeft = parseInt(focusInput.value) * 60;
+        secondsLeft = getFocusSeconds();
         updateDisplay();
     });
 
-    focusInput.addEventListener('input', function () {
-        if (!intervalId && !isBreak) {
-            secondsLeft = parseInt(focusInput.value) * 60;
-            updateDisplay();
-        }
-    });
+    function updateFromInputs() {
+        if (intervalId) return;
+        secondsLeft = isBreak ? getBreakSeconds() : getFocusSeconds();
+        updateDisplay();
+    }
 
-    breakInput.addEventListener('input', function () {
-        if (!intervalId && isBreak) {
-            secondsLeft = parseInt(breakInput.value) * 60;
-            updateDisplay();
-        }
-    });
+    focusInput.addEventListener('input', updateFromInputs);
+    focusSecInput.addEventListener('input', updateFromInputs);
+    breakInput.addEventListener('input', updateFromInputs);
+    breakSecInput.addEventListener('input', updateFromInputs);
 
     updateDisplay();
 }
@@ -156,18 +159,36 @@ if (promptGrid) {
 
     renderPrompts(promptSubject.value);
 }
-const themeToggle = document.getElementById('themeToggle');
 
-if (themeToggle) {
+const themeMenuBtn = document.getElementById('themeMenuBtn');
+const themeMenuDropdown = document.getElementById('themeMenuDropdown');
+const themeOptions = document.querySelectorAll('.theme-option');
+
+if (themeMenuBtn) {
     if (localStorage.getItem('theme') === 'dark') {
         document.body.classList.add('dark-mode');
-        themeToggle.textContent = '☀️';
     }
 
-    themeToggle.addEventListener('click', function () {
-        document.body.classList.toggle('dark-mode');
-        const isDark = document.body.classList.contains('dark-mode');
-        themeToggle.textContent = isDark ? '☀️' : '🌙';
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    themeMenuBtn.addEventListener('click', function () {
+        themeMenuDropdown.classList.toggle('open');
+    });
+
+    document.addEventListener('click', function (event) {
+        if (!themeMenuBtn.contains(event.target) && !themeMenuDropdown.contains(event.target)) {
+            themeMenuDropdown.classList.remove('open');
+        }
+    });
+
+    themeOptions.forEach(function (option) {
+        option.addEventListener('click', function () {
+            const theme = option.dataset.theme;
+            if (theme === 'dark') {
+                document.body.classList.add('dark-mode');
+            } else {
+                document.body.classList.remove('dark-mode');
+            }
+            localStorage.setItem('theme', theme);
+            themeMenuDropdown.classList.remove('open');
+        });
     });
 }
