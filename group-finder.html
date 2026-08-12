@@ -80,9 +80,24 @@
 </section>
         </section>
 
-        <div class="placeholder-area">
-            <p>Group lists and forms will be added in sprint 4.</p>
-        </div>
+        <section class="listings-section">
+    <h2 class="resource-subheading">Available Groups</h2>
+
+    <div class="filter-bar">
+        <select id="levelFilter">
+            <option value="all">All Levels</option>
+            <option value="L2">Level 2</option>
+            <option value="L3">Level 3</option>
+        </select>
+        <select id="modeFilter">
+            <option value="all">All Modes</option>
+            <option value="online">Online</option>
+            <option value="in-person">In Person</option>
+        </select>
+    </div>
+
+    <div class="listing-grid" id="listingGrid"></div>
+</section>
     </main>
 
     <script src="js/main.js"></script>
