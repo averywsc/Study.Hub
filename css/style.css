@@ -664,3 +664,106 @@ body.dark-mode .header-resources p,
 body.dark-mode .header-finder p {
     color: var(--text-main);
 }
+
+.listings-section {
+    margin-bottom: 2.5rem;
+}
+
+.filter-bar {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.filter-bar select {
+    padding: 0.6rem 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-family: var(--font-clean);
+    color: var(--text-main);
+    background-color: var(--white-base);
+}
+
+.listing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
+}
+
+.listing-card {
+    background-color: var(--white-base);
+    border: 1px solid #edf2f7;
+    border-left: 4px solid var(--btn-finder);
+    border-radius: 8px;
+    padding: 1.25rem;
+}
+
+.listing-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.listing-subject {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.listing-level {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    background-color: #f7fafc;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    border: 1px solid #e2e8f0;
+}
+
+.listing-time {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+}
+
+.listing-join {
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 0.5rem 1.25rem;
+    border-radius: 4px;
+    color: #ffffff;
+    background-color: var(--btn-finder);
+}
+
+.listing-join:hover {
+    opacity: 0.9;
+}
+
+body.dark-mode .listing-card {
+    background-color: #2d3748;
+    border-color: #4a5568;
+}
+
+body.dark-mode .listing-subject {
+    color: #f7fafc;
+}
+
+body.dark-mode .listing-level,
+body.dark-mode .listing-time {
+    color: #a0aec0;
+}
+
+body.dark-mode .listing-level {
+    background-color: #1a202c;
+    border-color: #4a5568;
+}
+
+body.dark-mode .filter-bar select {
+    background-color: #1a202c;
+    color: #e2e8f0;
+    border-color: #4a5568;
+}
