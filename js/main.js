@@ -192,3 +192,47 @@ if (themeMenuBtn) {
         });
     });
 }
+
+const listingGrid = document.getElementById('listingGrid');
+const levelFilter = document.getElementById('levelFilter');
+const modeFilter = document.getElementById('modeFilter');
+
+if (listingGrid) {
+    const listings = [
+        { subject: "Mathematics", level: "L2", mode: "online", time: "Wed 4:00 PM", join: "Google Meet" },
+        { subject: "Biology", level: "L3", mode: "in-person", time: "Thu 3:30 PM, Library", join: "In person" },
+        { subject: "Chemistry", level: "L2", mode: "online", time: "Mon 5:00 PM", join: "Discord" },
+        { subject: "English", level: "L3", mode: "in-person", time: "Fri 12:30 PM, Room 12", join: "In person" },
+        { subject: "Physics", level: "L3", mode: "online", time: "Tue 6:00 PM", join: "Google Meet" },
+        { subject: "Geography", level: "L2", mode: "in-person", time: "Wed 12:30 PM, Room 4", join: "In person" }
+    ];
+
+    function renderListings() {
+        const level = levelFilter.value;
+        const mode = modeFilter.value;
+
+        listingGrid.innerHTML = '';
+
+        listings
+            .filter(function (item) {
+                return (level === 'all' || item.level === level) && (mode === 'all' || item.mode === mode);
+            })
+            .forEach(function (item) {
+                const card = document.createElement('div');
+                card.className = 'listing-card';
+                card.innerHTML =
+                    '<div class="listing-card-top">' +
+                        '<span class="listing-subject">' + item.subject + '</span>' +
+                        '<span class="listing-level">' + item.level + '</span>' +
+                    '</div>' +
+                    '<p class="listing-time">' + item.time + '</p>' +
+                    '<a href="#" class="listing-join">' + item.join + '</a>';
+                listingGrid.appendChild(card);
+            });
+    }
+
+    levelFilter.addEventListener('change', renderListings);
+    modeFilter.addEventListener('change', renderListings);
+
+    renderListings();
+}
