@@ -45,6 +45,56 @@
                     <option value="in-person">In Person</option>
                 </select>
             </div>
+            <section class="post-section">
+    <h2 class="resource-subheading">Post a Group</h2>
+    <form class="post-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <div class="post-form-row">
+            <label>
+                Subject
+                <select name="subject" required>
+                    <option value="Mathematics">Mathematics</option>
+                    <option value="Biology">Biology</option>
+                    <option value="Physics">Physics</option>
+                    <option value="Chemistry">Chemistry</option>
+                    <option value="History">History</option>
+                    <option value="Geography">Geography</option>
+                    <option value="Economics">Economics</option>
+                    <option value="English">English</option>
+                </select>
+            </label>
+            <label>
+                Level
+                <select name="level" required>
+                    <option value="L2">Level 2</option>
+                    <option value="L3">Level 3</option>
+                </select>
+            </label>
+        </div>
+
+        <div class="post-form-row">
+            <label>
+                Mode
+                <select name="mode" required>
+                    <option value="online">Online</option>
+                    <option value="in-person">In Person</option>
+                </select>
+            </label>
+            <label>
+                Time
+                <input type="text" name="time" placeholder="e.g. Wed 4:00 PM" required>
+            </label>
+        </div>
+
+        <label class="post-form-full">
+            How to join
+            <input type="text" name="join" placeholder="e.g. Discord link or Room 4" required>
+        </label>
+
+        <p class="post-form-note">Please don't include personal contact details like your phone number or full name.</p>
+
+        <button type="submit" class="timer-btn timer-btn-primary">Submit Group</button>
+    </form>
+</section>
 
             <div class="listing-grid" id="listingGrid"></div>
         </section>
