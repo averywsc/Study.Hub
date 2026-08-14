@@ -1161,3 +1161,20 @@ body.dark-mode .listing-join-static {
         min-width: 0;
     }
 }
+
+.intro-section {
+    padding: 1.5rem 5% 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.intro-text {
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 700px;
+}
+
+body.dark-mode .intro-text {
+    color: #a0aec0;
+}
