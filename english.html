@@ -6,7 +6,7 @@
     <title>English - Student Hub</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body data-subject="english">
     <nav class="navbar">
         <a href="index.html" class="nav-logo">STUDENT HUB</a>
         <div class="nav-links">
@@ -44,29 +44,28 @@
     <main class="container">
         <header class="subject-header border-lit">
             <h1>English</h1>
-            <p class="subject-standard-tag">Achievement Standard: AS91098 (Visual Text)</p>
+            <p class="subject-standard-tag">Select a standard below to view its notes and practice material.</p>
         </header>
+
+        <a href="#practiceSection" class="jump-link">↓ Jump to Practice Material</a>
+
+        <section class="standard-select-section">
+            <label for="standardSelect" class="standard-select-label">Standard</label>
+            <select id="standardSelect" class="standard-select">
+                <option value="AS91098">AS91098</option>
+                <option value="AS91099">AS91099</option>
+                <option value="AS91100">AS91100</option>
+            </select>
+        </section>
 
         <section class="notes-section">
             <h2 class="resource-subheading">Key Notes</h2>
-            <div class="notes-card">
-                <h3>Visual Text Summary</h3>
-                <ul class="notes-list">
-                    <li>Visual text includes film, advertising, cartoons, photography, and other non-written media.</li>
-                    <li>Identify visual and verbal techniques such as camera angle, lighting, colour, symbolism, and framing.</li>
-                    <li>Explain how techniques create meaning and shape audience response or interpretation.</li>
-                    <li>Use PEEL structure (Point, Evidence, Explain, Link) to build strong analytical paragraphs.</li>
-                    <li>Support points with specific, detailed evidence directly from the visual text studied in class.</li>
-                </ul>
-            </div>
+            <div class="notes-card" id="notesCard"></div>
         </section>
 
-        <section class="practice-section">
+        <section class="practice-section" id="practiceSection">
             <h2 class="resource-subheading">Practice Material</h2>
-            <div class="practice-buttons">
-                <a href="assets/english-paper.pdf" target="_blank" class="btn">Download Exam Paper</a>
-                <a href="assets/english-standard.pdf" target="_blank" class="btn-secondary">Download Standard Details</a>
-            </div>
+            <div class="practice-buttons" id="practiceButtons"></div>
         </section>
     </main>
 
