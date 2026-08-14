@@ -237,13 +237,13 @@ const modeFilter = document.getElementById('modeFilter');
 
 if (listingGrid) {
     const listings = [
-        { subject: "Mathematics", level: "L2", mode: "online", time: "Wed 4:00 PM", join: "Google Meet" },
-        { subject: "Biology", level: "L3", mode: "in-person", time: "Thu 3:30 PM, Library", join: "In person" },
-        { subject: "Chemistry", level: "L2", mode: "online", time: "Mon 5:00 PM", join: "Discord" },
-        { subject: "English", level: "L3", mode: "in-person", time: "Fri 12:30 PM, Room 12", join: "In person" },
-        { subject: "Physics", level: "L3", mode: "online", time: "Tue 6:00 PM", join: "Google Meet" },
-        { subject: "Geography", level: "L2", mode: "in-person", time: "Wed 12:30 PM, Room 4", join: "In person" }
-    ];
+    { subject: "Mathematics", level: "L2", mode: "online", time: "Wed 4:00 PM", join: "Google Meet", link: "https://meet.google.com/" },
+    { subject: "Biology", level: "L3", mode: "in-person", time: "Thu 3:30 PM, Library", join: "In person", link: null },
+    { subject: "Chemistry", level: "L2", mode: "online", time: "Mon 5:00 PM", join: "Discord", link: "https://discord.com/" },
+    { subject: "English", level: "L3", mode: "in-person", time: "Fri 12:30 PM, Room 12", join: "In person", link: null },
+    { subject: "Physics", level: "L3", mode: "online", time: "Tue 6:00 PM", join: "Google Meet", link: "https://meet.google.com/" },
+    { subject: "Geography", level: "L2", mode: "in-person", time: "Wed 12:30 PM, Room 4", join: "In person", link: null }
+  ];
 
     function renderListings() {
         const level = levelFilter.value;
