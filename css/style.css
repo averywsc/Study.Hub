@@ -576,12 +576,12 @@ body {
     font-weight: 600;
 }
 
-body.text-large {
-    font-size: 1.15rem;
+html.text-large {
+    font-size: 118.75%;
 }
 
-body.text-small {
-    font-size: 0.9rem;
+html.text-small {
+    font-size: 87.5%;
 }
 
 body.dark-mode .settings-menu-btn {
