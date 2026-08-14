@@ -1059,21 +1059,16 @@ body.dark-mode .standard-select {
 
 .jump-link {
     display: inline-block;
-    margin-bottom: 1.5rem;
-    color: var(--btn-finder);
+    margin: 1.5rem 5% 0;
+    color: var(--text-muted);
     text-decoration: none;
     font-size: 0.9rem;
-    font-weight: 600;
 }
 
 .jump-link:hover {
-    text-decoration: underline;
+    color: var(--text-main);
 }
 
 html {
     scroll-behavior: smooth;
-}
-
-body.dark-mode .jump-link {
-    color: #8bb4d6;
 }
