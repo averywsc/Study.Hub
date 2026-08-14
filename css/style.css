@@ -584,6 +584,11 @@ html.text-small {
     font-size: 87.5%;
 }
 
+html.font-dyslexic,
+html.font-dyslexic * {
+    font-family: 'OpenDyslexic', var(--font-clean) !important;
+}
+
 body.dark-mode .settings-menu-btn {
     color: #a0aec0;
     background-color: #2d3748;
