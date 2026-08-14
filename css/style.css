@@ -1072,3 +1072,20 @@ body.dark-mode .standard-select {
 html {
     scroll-behavior: smooth;
 }
+
+.listing-join-static {
+    display: inline-block;
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 0.5rem 1.25rem;
+    border-radius: 4px;
+    color: var(--text-muted);
+    background-color: #f7fafc;
+    border: 1px solid #e2e8f0;
+}
+
+body.dark-mode .listing-join-static {
+    background-color: #1a202c;
+    border-color: #4a5568;
+    color: #a0aec0;
+}
