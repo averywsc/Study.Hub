@@ -329,6 +329,364 @@ if (standardSelect) {
                     }
                 ]
             }
+        },
+        chemistry: {
+            AS91164: {
+                title: "AS91164 — Demonstrate understanding of bonding, structure, properties and energy changes",
+                notes: [
+                    "Covers ionic, covalent, and metallic bonding, and how each affects a substance's structure.",
+                    "Understand how structure (molecular vs lattice) affects melting point, solubility, and conductivity.",
+                    "Be able to explain shapes of molecules using electron pair repulsion theory (VSEPR).",
+                    "Review past exam papers to see the style and structure of questions asked.",
+                    "Compare your answers against the grade exemplars to see what Achievement, Merit, and Excellence responses look like."
+                ],
+                years: [
+                    {
+                        year: "2025",
+                        exam: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2025/91164-exm-2025.pdf",
+                        excellence: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2025/91164-exp-2025-excellence.pdf",
+                        merit: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2025/91164-exp-2025-merit.pdf",
+                        achieved: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2025/91164-exp-2025-achievement.pdf"
+                    }
+                ]
+            },
+            AS91165: {
+                title: "AS91165 — Demonstrate understanding of the properties of selected organic compounds",
+                notes: [
+                    "Covers naming and classifying organic compounds including alkanes, alkenes, and alcohols.",
+                    "Understand reaction types such as substitution, addition, and oxidation for organic compounds.",
+                    "Be able to relate the properties of organic compounds to their structure and functional groups.",
+                    "Review past exam papers to see the style and structure of questions asked.",
+                    "Compare your answers against the grade exemplars to see what Achievement, Merit, and Excellence responses look like."
+                ],
+                years: [
+                    {
+                        year: "2025",
+                        exam: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2025/91165-exm-2025.pdf",
+                        excellence: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2025/91165-exp-2025-excellence.pdf",
+                        merit: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2025/91165-exp-2025-merit.pdf",
+                        achieved: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2025/91165-exp-2025-achievement.pdf"
+                    }
+                ]
+            },
+            AS91166: {
+                title: "AS91166 — Demonstrate understanding of chemical reactivity",
+                notes: [
+                    "Covers reaction types including acid-base, precipitation, and redox reactions.",
+                    "Understand factors that affect reaction rate: concentration, temperature, surface area, and catalysts.",
+                    "Be able to write and balance chemical equations for common reaction types.",
+                    "Review past exam papers to see the style and structure of questions asked.",
+                    "Compare your answers against the grade exemplars to see what Achievement, Merit, and Excellence responses look like."
+                ],
+                years: [
+                    {
+                        year: "2025",
+                        exam: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2025/91166-exm-2025.pdf",
+                        excellence: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2025/91166-exp-2025-excellence.pdf",
+                        merit: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2025/91166-exp-2025-merit.pdf",
+                        achieved: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2025/91166-exp-2025-achievement.pdf"
+                    }
+                ]
+            }
+        },
+        economics: {
+            AS91222: {
+                title: "AS91222 — Analyse inflation using economic concepts and models",
+                notes: [
+                    "Inflation is a sustained increase in the general price level of goods and services over time.",
+                    "Distinguish between demand-pull and cost-push inflation, and their different causes.",
+                    "Understand how the Reserve Bank uses the Official Cash Rate (OCR) to manage inflation.",
+                    "Review past exam papers to see the style and structure of questions asked.",
+                    "Compare your answers against the grade exemplars to see what Achievement, Merit, and Excellence responses look like."
+                ],
+                years: [
+                    {
+                        year: "2025",
+                        exam: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2025/91222-exm-2025.pdf",
+                        excellence: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2025/91222-exp-2025-excellence.pdf",
+                        merit: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2025/91222-exp-2025-merit.pdf",
+                        achieved: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2025/91222-exp-2025-achievement.pdf"
+                    }
+                ]
+            },
+            AS91223: {
+                title: "AS91223 — Analyse international trade using economic concepts and models",
+                notes: [
+                    "Covers the theory of comparative advantage and why countries choose to trade.",
+                    "Understand exchange rates and how they affect the price of imports and exports.",
+                    "Be able to use supply and demand diagrams to model international trade effects.",
+                    "Review past exam papers to see the style and structure of questions asked.",
+                    "Compare your answers against the grade exemplars to see what Achievement, Merit, and Excellence responses look like."
+                ],
+                years: [
+                    {
+                        year: "2025",
+                        exam: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2025/91223-exm-2025.pdf",
+                        excellence: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2025/91223-exp-2025-excellence.pdf",
+                        merit: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2025/91223-exp-2025-merit.pdf",
+                        achieved: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2025/91223-exp-2025-achievement.pdf"
+                    }
+                ]
+            }
+        },
+        english: {
+            AS91098: {
+                title: "AS91098 — Analyse specified aspect(s) of studied written text(s), supported by evidence",
+                notes: [
+                    "Covers close analysis of a written text studied in class (novel, play, or similar).",
+                    "Use PEEL structure (Point, Evidence, Explain, Link) to build strong analytical paragraphs.",
+                    "Support points with specific, detailed evidence directly from the text studied in class.",
+                    "Review past exam papers to see the style and structure of questions asked.",
+                    "Compare your answers against the grade exemplars to see what Achievement, Merit, and Excellence responses look like."
+                ],
+                years: [
+                    {
+                        year: "2022",
+                        exam: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2022/91098-exm-2022.pdf",
+                        excellence: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2022/91098-exp-2022-excellence.pdf",
+                        merit: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2022/91098-exp-2022-merit.pdf",
+                        achieved: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2022/91098-exp-2022-achievement.pdf"
+                    }
+                ]
+            },
+            AS91099: {
+                title: "AS91099 — Analyse specified aspect(s) of studied visual or oral text(s), supported by evidence",
+                notes: [
+                    "Covers visual and oral texts such as film, advertising, or performance studied in class.",
+                    "Identify visual and verbal techniques such as camera angle, lighting, colour, symbolism, and framing.",
+                    "Explain how techniques create meaning and shape audience response or interpretation.",
+                    "Review past exam papers to see the style and structure of questions asked.",
+                    "Compare your answers against the grade exemplars to see what Achievement, Merit, and Excellence responses look like."
+                ],
+                years: [
+                    {
+                        year: "2024",
+                        exam: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2024/91099-exm-2024.pdf",
+                        excellence: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2024/91099-exp-2024-excellence.pdf",
+                        merit: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2024/91099-exp-2024-merit.pdf",
+                        achieved: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2024/91099-exp-2024-achievement.pdf"
+                    },
+                    {
+                        year: "2022",
+                        exam: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2022/91099-exm-2022.pdf",
+                        excellence: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2022/91099-exp-2022-excellence.pdf",
+                        merit: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2022/91099-exp-2022-merit.pdf",
+                        achieved: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2022/91099-exp-2022-achievement.pdf"
+                    }
+                ]
+            },
+            AS91100: {
+                title: "AS91100 — Analyse significant aspects of unfamiliar written text(s) through close reading, supported by evidence",
+                notes: [
+                    "Covers close reading of an unseen text under exam conditions, unlike AS91098 which uses a studied text.",
+                    "Practice reading unfamiliar passages quickly and identifying key techniques and ideas.",
+                    "Support your analysis with quotes and specific evidence directly from the unfamiliar text.",
+                    "Review past exam papers to see the style and structure of questions asked.",
+                    "Compare your answers against the grade exemplars to see what Achievement, Merit, and Excellence responses look like."
+                ],
+                years: [
+                    {
+                        year: "2025",
+                        exam: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2025/91100-exm-2025.pdf",
+                        excellence: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2025/91100-exp-2025-excellence.pdf",
+                        merit: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2025/91100-exp-2025-merit.pdf",
+                        achieved: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2025/91100-exp-2025-achievement.pdf"
+                    }
+                ]
+            }
+        },
+        geography: {
+            AS91240: {
+                title: "AS91240 — Demonstrate geographic understanding of a large natural environment",
+                notes: [
+                    "Covers a large natural environment (e.g. a river system, coastline, or mountain range) and the processes that shape it.",
+                    "Understand physical processes and how they interact to create landforms over time.",
+                    "Be able to explain how people interact with and are affected by the large natural environment studied.",
+                    "Review past exam papers to see the style and structure of questions asked.",
+                    "Compare your answers against the grade exemplars to see what Achievement, Merit, and Excellence responses look like."
+                ],
+                years: [
+                    {
+                        year: "2024",
+                        exam: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2024/91240-exm-2024.pdf",
+                        excellence: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2024/91240-exp-2024-excellence.pdf",
+                        merit: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2024/91240-exp-2024-merit.pdf",
+                        achieved: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2024/91240-exp-2024-achievement.pdf"
+                    }
+                ]
+            },
+            AS91242: {
+                title: "AS91242 — Demonstrate geographic understanding of differences in development",
+                notes: [
+                    "Covers how and why levels of development differ between places, at a range of scales.",
+                    "Understand indicators used to measure development, such as GDP, HDI, and literacy rates.",
+                    "Be able to explain causes and consequences of uneven development between or within countries.",
+                    "Review past exam papers to see the style and structure of questions asked.",
+                    "Compare your answers against the grade exemplars to see what Achievement, Merit, and Excellence responses look like."
+                ],
+                years: [
+                    {
+                        year: "2024",
+                        exam: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2024/91242-exm-2024.pdf",
+                        excellence: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2024/91242-exp-2024-excellence.pdf",
+                        merit: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2024/91242-exp-2024-merit.pdf",
+                        achieved: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2024/91242-exp-2024-achievement.pdf"
+                    }
+                ]
+            }
+        },
+        history: {
+            AS91231: {
+                title: "AS91231 — Examine sources of an historical event that is of significance to New Zealanders",
+                notes: [
+                    "Covers evaluating primary and secondary sources related to a significant historical event.",
+                    "Understand how to assess the reliability, purpose, and perspective of a historical source.",
+                    "Be able to use evidence from multiple sources to build a supported argument about the event.",
+                    "Review past exam papers to see the style and structure of questions asked.",
+                    "Compare your answers against the grade exemplars to see what Achievement, Merit, and Excellence responses look like."
+                ],
+                years: [
+                    {
+                        year: "2025",
+                        exam: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2025/91231-exm-2025.pdf",
+                        excellence: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2025/91231-exp-2025-excellence.pdf",
+                        merit: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2025/91231-exp-2025-merit.pdf",
+                        achieved: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2025/91231-exp-2025-achievement.pdf"
+                    }
+                ]
+            },
+            AS91233: {
+                title: "AS91233 — Examine causes and consequences of a significant historical event",
+                notes: [
+                    "Covers identifying long-term, short-term, and trigger causes of a significant historical event.",
+                    "Understand the immediate and longer-term consequences of the event studied.",
+                    "Practice structuring essay paragraphs with a clear argument, supporting evidence, and analysis.",
+                    "Review past exam papers to see the style and structure of questions asked.",
+                    "Compare your answers against the grade exemplars to see what Achievement, Merit, and Excellence responses look like."
+                ],
+                years: [
+                    {
+                        year: "2023",
+                        exam: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2023/91233-mex-2023.pdf",
+                        excellence: "http://nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2023/91233-exp-2023-excellence.pdf",
+                        merit: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2023/91233-exp-2023-merit.pdf",
+                        achieved: "http://nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2023/91233-exp-2023-achievement.pdf"
+                    }
+                ]
+            }
+        },
+        math: {
+            AS91261: {
+                title: "AS91261 — Apply algebraic methods in solving problems",
+                notes: [
+                    "Simplify algebraic expressions using expansion, factorising, and combining like terms.",
+                    "Solve linear and quadratic equations, including by factorising and using the quadratic formula.",
+                    "Work with exponents and logarithms, including simplifying expressions using index laws.",
+                    "Show clear working for every step, since method marks are awarded even if the final answer is wrong.",
+                    "Review past exam papers to see the style and structure of questions asked."
+                ],
+                years: [
+                    {
+                        year: "2025",
+                        exam: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2025/91261-exm-2025.pdf",
+                        excellence: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2025/91261-frm-2025.pdf",
+                        merit: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2025/91261-frm-2025.pdf",
+                        achieved: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2025/91261-frm-2025.pdf"
+                    }
+                ]
+            },
+            AS91262: {
+                title: "AS91262 — Apply calculus methods in solving problems",
+                notes: [
+                    "Sketch the graphs of functions and their gradient functions and describe the relationship between them.",
+                    "Apply differentiation techniques to polynomials to find rates of change, turning points, and gradients.",
+                    "Apply anti-differentiation techniques to polynomials to solve area and motion problems.",
+                    "Show clear working for every step, since method marks are awarded even if the final answer is wrong.",
+                    "Review past exam papers to see the style and structure of questions asked."
+                ],
+                years: [
+                    {
+                        year: "2025",
+                        exam: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2025/91262-exm-2025.pdf",
+                        excellence: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2025/91262-exm-2025.pdf",
+                        merit: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2025/91262-exm-2025.pdf",
+                        achieved: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2025/91262-exm-2025.pdf"
+                    },
+                    {
+                        year: "2024",
+                        exam: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2024/91262-exm-2024.pdf",
+                        excellence: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2024/91262-exm-2024.pdf",
+                        merit: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2024/91262-exm-2024.pdf",
+                        achieved: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2024/91262-exm-2024.pdf"
+                    }
+                ]
+            },
+            AS91267: {
+                title: "AS91267 — Apply probability methods in solving problems",
+                notes: [
+                    "Covers calculating and interpreting probabilities using tables, tree diagrams, and Venn diagrams.",
+                    "Understand independent and conditional probability and how to identify which applies.",
+                    "Apply probability distributions to solve real-world problems.",
+                    "Show clear working for every step, since method marks are awarded even if the final answer is wrong.",
+                    "Review past exam papers to see the style and structure of questions asked."
+                ],
+                years: [
+                    {
+                        year: "2025",
+                        exam: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2025/91267-exm-2025.pdf",
+                        excellence: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2025/91267-exm-2025.pdf",
+                        merit: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2025/91267-exm-2025.pdf",
+                        achieved: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2025/91267-exm-2025.pdf"
+                    },
+                    {
+                        year: "2024",
+                        exam: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2024/91267-exm-2024.pdf",
+                        excellence: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2024/91267-exm-2024.pdf",
+                        merit: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2024/91267-exm-2024.pdf",
+                        achieved: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2024/91267-exm-2024.pdf"
+                    }
+                ]
+            }
+        },
+        physics: {
+            AS91170: {
+                title: "AS91170 — Demonstrate understanding of waves",
+                notes: [
+                    "Covers wave properties including wavelength, frequency, amplitude, and speed.",
+                    "Understand reflection, refraction, diffraction, and interference of waves.",
+                    "Be able to apply wave equations to solve problems involving sound and light.",
+                    "Review past exam papers to see the style and structure of questions asked.",
+                    "Compare your answers against the grade exemplars to see what Achievement, Merit, and Excellence responses look like."
+                ],
+                years: [
+                    {
+                        year: "2025",
+                        exam: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2025/91170-exm-2025.pdf",
+                        excellence: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2025/91170-exp-2025-excellence.pdf",
+                        merit: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2025/91170-exp-2025-merit.pdf",
+                        achieved: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2025/91170-exp-2025-achievement.pdf"
+                    }
+                ]
+            },
+            AS91171: {
+                title: "AS91171 — Demonstrate understanding of mechanics",
+                notes: [
+                    "Covers forces, motion, momentum, and energy in a mechanical system.",
+                    "Understand Newton's laws of motion and how to apply them to real scenarios.",
+                    "Be able to use kinematics equations to solve problems involving velocity and acceleration.",
+                    "Review past exam papers to see the style and structure of questions asked.",
+                    "Compare your answers against the grade exemplars to see what Achievement, Merit, and Excellence responses look like."
+                ],
+                years: [
+                    {
+                        year: "2025",
+                        exam: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2025/91171-exm-2025.pdf",
+                        excellence: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2025/91171-exp-2025-excellence.pdf",
+                        merit: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2025/91171-exp-2025-merit.pdf",
+                        achieved: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2025/91171-exp-2025-achievement.pdf"
+                    }
+                ]
+            }
         }
     };
 
