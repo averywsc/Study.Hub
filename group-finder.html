@@ -11,13 +11,24 @@
    <nav class="navbar">
     <a href="index.html" class="nav-logo">STUDENT HUB</a>
     <div class="nav-links">
-        <div class="theme-menu">
-            <button id="themeMenuBtn" class="theme-menu-btn">Theme</button>
-            <div class="theme-menu-dropdown" id="themeMenuDropdown">
-                <button class="theme-option" data-theme="light">Light</button>
-                <button class="theme-option" data-theme="dark">Dark</button>
-            </div>
+        <div class="settings-menu">
+    <button id="settingsMenuBtn" class="settings-menu-btn">
+        <span>Settings</span>
+    </button>
+    <div class="settings-menu-dropdown" id="settingsMenuDropdown">
+        <div class="settings-group">
+            <p class="settings-label">Theme</p>
+            <button class="settings-option" data-theme="light">Light</button>
+            <button class="settings-option" data-theme="dark">Dark</button>
         </div>
+        <div class="settings-group">
+            <p class="settings-label">Text Size</p>
+            <button class="settings-option" data-textsize="small">Small</button>
+            <button class="settings-option" data-textsize="normal">Normal</button>
+            <button class="settings-option" data-textsize="large">Large</button>
+        </div>
+    </div>
+</div>
         <a href="index.html" class="active">Home</a>
         <a href="resources.html">Resources</a>
         <a href="group-finder.html">Find a group</a>
