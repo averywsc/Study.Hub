@@ -274,3 +274,87 @@ if (listingGrid) {
 
     renderListings();
 }
+
+const standardSelect = document.getElementById('standardSelect');
+const notesCard = document.getElementById('notesCard');
+const practiceButtons = document.getElementById('practiceButtons');
+
+if (standardSelect) {
+    const subjectKey = document.body.dataset.subject;
+
+    const standardsData = {
+        biology: {
+            AS91157: {
+                title: "AS91157 — Demonstrate understanding of genetic variation and change",
+                notes: [
+                    "Covers how genetic variation arises, including mutation, meiosis, and recombination.",
+                    "Understand the difference between genotype and phenotype, and how environment can influence expression.",
+                    "Be able to explain natural selection and how it drives evolutionary change over time.",
+                    "Review past exam papers to see the style and structure of questions asked.",
+                    "Compare your answers against the grade exemplars to see what Achievement, Merit, and Excellence responses look like."
+                ],
+                years: [
+                    {
+                        year: "2025",
+                        exam: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2025/91157-exm-2025.pdf",
+                        excellence: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2025/91157-exp-2025-excellence.pdf",
+                        merit: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2025/91157-exp-2025-merit.pdf",
+                        achieved: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2025/91157-exp-2025-achievement.pdf"
+                    }
+                ]
+            },
+            AS91159: {
+                title: "AS91159 — Demonstrate understanding of gene expression",
+                notes: [
+                    "Covers how genes are expressed through transcription and translation to produce proteins.",
+                    "Understand the roles of DNA, mRNA, and ribosomes in the process of gene expression.",
+                    "Be able to explain how mutations can affect gene expression and resulting proteins.",
+                    "Review past exam papers to see the style and structure of questions asked.",
+                    "Compare your answers against the grade exemplars to see what Achievement, Merit, and Excellence responses look like."
+                ],
+                years: [
+                    {
+                        year: "2025",
+                        exam: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2025/91159-exm-2025.pdf",
+                        excellence: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2025/91159-exp-2025-excellence.pdf",
+                        merit: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2025/91159-exp-2025-merit.pdf",
+                        achieved: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2025/91159-exp-2025-achievement.pdf"
+                    },
+                    {
+                        year: "2024",
+                        exam: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2024/91159-exm-2024.pdf",
+                        excellence: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2024/91159-exp-2024-excellence.pdf",
+                        merit: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2024/91159-exp-2024-merit.pdf",
+                        achieved: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2024/91159-exp-2024-achievement.pdf"
+                    }
+                ]
+            }
+        }
+    };
+
+    function renderStandard() {
+        const code = standardSelect.value;
+        const data = standardsData[subjectKey][code];
+
+        notesCard.innerHTML =
+            '<h3>' + data.title + '</h3>' +
+            '<ul class="notes-list">' +
+            data.notes.map(function (n) { return '<li>' + n + '</li>'; }).join('') +
+            '</ul>';
+
+        practiceButtons.innerHTML = data.years.map(function (y) {
+            return '<div class="year-block">' +
+                '<h4 class="year-label">' + y.year + '</h4>' +
+                '<div class="year-links">' +
+                    '<a href="' + y.exam + '" target="_blank" class="btn">Exam Paper</a>' +
+                    '<a href="' + y.excellence + '" target="_blank" class="btn-secondary">Excellence Exemplar</a>' +
+                    '<a href="' + y.merit + '" target="_blank" class="btn-secondary">Merit Exemplar</a>' +
+                    '<a href="' + y.achieved + '" target="_blank" class="btn-secondary">Achieved Exemplar</a>' +
+                '</div>' +
+            '</div>';
+        }).join('');
+    }
+
+    standardSelect.addEventListener('change', renderStandard);
+    renderStandard();
+}
