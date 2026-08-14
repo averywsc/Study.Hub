@@ -173,9 +173,9 @@ if (settingsMenuBtn) {
     }
 
     if (savedTextSize === 'large') {
-        document.body.classList.add('text-large');
+        document.documentElement.classList.add('text-large');
     } else if (savedTextSize === 'small') {
-        document.body.classList.add('text-small');
+        document.documentElement.classList.add('text-small');
     }
 
     function markSelected() {
@@ -208,9 +208,9 @@ if (settingsMenuBtn) {
 
             if (option.dataset.textsize) {
                 const size = option.dataset.textsize;
-                document.body.classList.remove('text-large', 'text-small');
-                if (size === 'large') document.body.classList.add('text-large');
-                if (size === 'small') document.body.classList.add('text-small');
+                document.documentElement.classList.remove('text-large', 'text-small');
+                if (size === 'large') document.documentElement.classList.add('text-large');
+                if (size === 'small') document.documentElement.classList.add('text-small');
                 localStorage.setItem('textSize', size);
             }
 
