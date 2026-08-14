@@ -984,3 +984,28 @@ body.dark-mode .notes-card {
 body.dark-mode .notes-list {
     color: #e2e8f0;
 }
+
+.year-block {
+    margin-bottom: 1.5rem;
+}
+
+.year-block:last-child {
+    margin-bottom: 0;
+}
+
+.year-label {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+}
+
+.year-links {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+body.dark-mode .year-label {
+    color: #a0aec0;
+}
