@@ -1178,3 +1178,85 @@ body.dark-mode .listing-join-static {
 body.dark-mode .intro-text {
     color: #a0aec0;
 }
+
+@media (max-width: 600px) {
+    .navbar {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        position: relative;
+    }
+
+    .nav-links {
+        width: 100%;
+        justify-content: space-between;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .settings-menu {
+        position: static;
+    }
+
+    .settings-menu-dropdown {
+        position: fixed;
+        top: auto;
+        left: 5%;
+        right: 5%;
+        width: 90%;
+        min-width: 0;
+        margin-top: 0.5rem;
+    }
+
+    .timer-settings {
+        justify-content: flex-start;
+    }
+
+    .timer-controls {
+        flex-wrap: wrap;
+    }
+
+    .filter-bar {
+        flex-direction: column;
+    }
+
+    .filter-bar select {
+        width: 100%;
+    }
+
+    .post-form-row {
+        flex-direction: column;
+    }
+
+    .practice-buttons {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .practice-buttons .btn,
+    .practice-buttons .btn-secondary {
+        width: 100%;
+        text-align: center;
+    }
+
+    .year-links {
+        flex-direction: column;
+    }
+
+    .year-links a {
+        width: 100%;
+        text-align: center;
+    }
+
+    .subject-header {
+        padding: 1.5rem;
+    }
+
+    .timer-box {
+        max-width: 100%;
+    }
+
+    .standard-select {
+        width: 100%;
+        min-width: 0;
+    }
+}
