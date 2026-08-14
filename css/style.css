@@ -1059,7 +1059,7 @@ body.dark-mode .standard-select {
 
 .jump-link {
     display: inline-block;
-    margin: 1.5rem 5% 0;
+    margin: 0 0 1.5rem;
     color: var(--text-muted);
     text-decoration: none;
     font-size: 0.9rem;
