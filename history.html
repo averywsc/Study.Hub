@@ -6,7 +6,7 @@
     <title>History - Student Hub</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body data-subject="history">
     <nav class="navbar">
         <a href="index.html" class="nav-logo">STUDENT HUB</a>
         <div class="nav-links">
@@ -44,29 +44,27 @@
     <main class="container">
         <header class="subject-header border-history">
             <h1>History</h1>
-            <p class="subject-standard-tag">Achievement Standard: AS91247 (Historical Event)</p>
+            <p class="subject-standard-tag">Select a standard below to view its notes and practice material.</p>
         </header>
+
+        <a href="#practiceSection" class="jump-link">↓ Jump to Practice Material</a>
+
+        <section class="standard-select-section">
+            <label for="standardSelect" class="standard-select-label">Standard</label>
+            <select id="standardSelect" class="standard-select">
+                <option value="AS91231">AS91231</option>
+                <option value="AS91233">AS91233</option>
+            </select>
+        </section>
 
         <section class="notes-section">
             <h2 class="resource-subheading">Key Notes</h2>
-            <div class="notes-card">
-                <h3>Historical Event Summary</h3>
-                <ul class="notes-list">
-                    <li>Identify the causes of the event, distinguishing between long-term, short-term, and trigger causes.</li>
-                    <li>Explain the perspectives of different groups involved, and how their views may have differed.</li>
-                    <li>Discuss the consequences of the event, both immediate and longer term.</li>
-                    <li>Use specific evidence, including dates, names, and key facts, to support your explanations.</li>
-                    <li>Practice structuring essay paragraphs with a clear argument, supporting evidence, and analysis.</li>
-                </ul>
-            </div>
+            <div class="notes-card" id="notesCard"></div>
         </section>
 
-        <section class="practice-section">
+        <section class="practice-section" id="practiceSection">
             <h2 class="resource-subheading">Practice Material</h2>
-            <div class="practice-buttons">
-                <a href="assets/history-paper.pdf" target="_blank" class="btn">Download Exam Paper</a>
-                <a href="assets/history-standard.pdf" target="_blank" class="btn-secondary">Download Standard Details</a>
-            </div>
+            <div class="practice-buttons" id="practiceButtons"></div>
         </section>
     </main>
 
