@@ -10,50 +10,66 @@
     <nav class="navbar">
         <a href="index.html" class="nav-logo">STUDENT HUB</a>
         <div class="nav-links">
-          <div class="settings-menu">
-    <button id="settingsMenuBtn" class="settings-menu-btn">
-        <span>Settings</span>
-    </button>
-    <div class="settings-menu-dropdown" id="settingsMenuDropdown">
-        <div class="settings-group">
-            <p class="settings-label">Theme</p>
-            <button class="settings-option" data-theme="light">Light</button>
-            <button class="settings-option" data-theme="dark">Dark</button>
-        </div>
-        <div class="settings-group">
-            <p class="settings-label">Text Size</p>
-            <button class="settings-option" data-textsize="small">Small</button>
-            <button class="settings-option" data-textsize="normal">Normal</button>
-            <button class="settings-option" data-textsize="large">Large</button>
-        </div>
-        <div class="settings-group">
-            <p class="settings-label">Font</p>
-            <button class="settings-option" data-font="default">Default</button>
-            <button class="settings-option" data-font="dyslexic">Dyslexic-friendly</button>
-        </div>
-    </div>
-</div>
+            <div class="settings-menu">
+                <button id="settingsMenuBtn" class="settings-menu-btn">
+                    <span>Settings</span>
+                </button>
+                <div class="settings-menu-dropdown" id="settingsMenuDropdown">
+                    <div class="settings-group">
+                        <p class="settings-label">Theme</p>
+                        <button class="settings-option" data-theme="light">Light</button>
+                        <button class="settings-option" data-theme="dark">Dark</button>
+                    </div>
+                    <div class="settings-group">
+                        <p class="settings-label">Text Size</p>
+                        <button class="settings-option" data-textsize="small">Small</button>
+                        <button class="settings-option" data-textsize="normal">Normal</button>
+                        <button class="settings-option" data-textsize="large">Large</button>
+                    </div>
+                    <div class="settings-group">
+                        <p class="settings-label">Font</p>
+                        <button class="settings-option" data-font="default">Default</button>
+                        <button class="settings-option" data-font="dyslexic">Dyslexic-friendly</button>
+                    </div>
+                </div>
+            </div>
             <a href="index.html">Home</a>
             <a href="resources.html">Resources</a>
             <a href="group-finder.html">Find a group</a>
         </div>
     </nav>
+
     <a href="javascript:history.back()" class="back-btn">← Back</a>
+
     <main class="container">
-        <h1>Chemistry</h1>
-        <p>Achievement Standard: AS91164 (Bonding, Structure, Properties)</p>
-        <div class="resource-content">
-            <section class="notes">
-                <h3>Key Notes</h3>
-                <ul><li><a href="#">Summary Sheet 1</a></li></ul>
-            </section>
-            <section class="practice">
-                <h3>Resources</h3>
+        <header class="subject-header border-chem">
+            <h1>Chemistry</h1>
+            <p class="subject-standard-tag">Achievement Standard: AS91164 (Bonding, Structure, Properties)</p>
+        </header>
+
+        <section class="notes-section">
+            <h2 class="resource-subheading">Key Notes</h2>
+            <div class="notes-card">
+                <h3>Bonding, Structure and Properties Summary</h3>
+                <ul class="notes-list">
+                    <li>Ionic bonding occurs between metals and non-metals, forming a lattice structure with high melting points.</li>
+                    <li>Covalent bonding occurs between non-metals, sharing electrons to form molecules or giant lattices.</li>
+                    <li>Metallic bonding involves a "sea" of delocalised electrons, giving metals their conductivity and malleability.</li>
+                    <li>Understand how structure (molecular vs lattice) affects properties like melting point, solubility, and conductivity.</li>
+                    <li>Be able to explain shapes of molecules using electron pair repulsion theory (VSEPR).</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="practice-section">
+            <h2 class="resource-subheading">Practice Material</h2>
+            <div class="practice-buttons">
                 <a href="assets/chemistry-paper.pdf" target="_blank" class="btn">Download Exam Paper</a>
                 <a href="assets/chemistry-standard.pdf" target="_blank" class="btn-secondary">Download Standard Details</a>
-            </section>
-        </div>
+            </div>
+        </section>
     </main>
+
     <script src="js/main.js"></script>
 </body>
 </html>
