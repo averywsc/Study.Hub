@@ -492,55 +492,127 @@ body {
 .back-btn:hover {
     color: var(--text-main);
 }
-
-.theme-menu {
+.settings-menu {
     position: relative;
 }
 
-.theme-menu-btn {
-    background: none;
+.settings-menu-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    background-color: var(--white-base);
     border: 1px solid #e2e8f0;
     border-radius: 6px;
     padding: 0.5rem 1rem;
     cursor: pointer;
     font-size: 0.85rem;
+    font-weight: 500;
     font-family: var(--font-clean);
-    color: var(--text-main);
+    color: var(--text-muted);
+    transition: color 0.2s ease, border-color 0.2s ease;
 }
 
-.theme-menu-dropdown {
+.settings-menu-btn:hover {
+    color: var(--text-main);
+    border-color: #cbd5e0;
+}
+
+.settings-menu-dropdown {
     display: none;
     position: absolute;
     top: 110%;
     right: 0;
     background-color: var(--white-base);
     border: 1px solid #e2e8f0;
-    border-radius: 6px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+    padding: 0.75rem;
     z-index: 10;
-    min-width: 120px;
+    min-width: 160px;
 }
 
-.theme-menu-dropdown.open {
+.settings-menu-dropdown.open {
     display: block;
 }
 
-.theme-option {
+.settings-group {
+    margin-bottom: 0.75rem;
+}
+
+.settings-group:last-child {
+    margin-bottom: 0;
+}
+
+.settings-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+    padding: 0 0.25rem;
+}
+
+.settings-option {
     display: block;
     width: 100%;
     text-align: left;
-    padding: 0.6rem 1rem;
+    padding: 0.5rem 0.6rem;
     background: none;
     border: none;
-    font-size: 0.9rem;
+    border-radius: 4px;
+    font-size: 0.88rem;
     font-family: var(--font-clean);
     color: var(--text-main);
     cursor: pointer;
 }
 
-.theme-option:hover {
+.settings-option:hover {
     background-color: #f7fafc;
+}
+
+.settings-option.selected {
+    background-color: #edf2f7;
+    font-weight: 600;
+}
+
+body.text-large {
+    font-size: 1.15rem;
+}
+
+body.text-small {
+    font-size: 0.9rem;
+}
+
+body.dark-mode .settings-menu-btn {
+    color: #a0aec0;
+    background-color: #2d3748;
+    border-color: #4a5568;
+}
+
+body.dark-mode .settings-menu-btn:hover {
+    color: #f7fafc;
+}
+
+body.dark-mode .settings-menu-dropdown {
+    background-color: #2d3748;
+    border-color: #4a5568;
+}
+
+body.dark-mode .settings-label {
+    color: #718096;
+}
+
+body.dark-mode .settings-option {
+    color: #e2e8f0;
+}
+
+body.dark-mode .settings-option:hover {
+    background-color: #364154;
+}
+
+body.dark-mode .settings-option.selected {
+    background-color: #364154;
 }
 
 body.dark-mode {
