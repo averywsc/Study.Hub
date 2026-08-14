@@ -907,3 +907,80 @@ body.dark-mode .post-form input {
     color: #e2e8f0;
     border-color: #4a5568;
 }
+
+.subject-header {
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    border-left: 5px solid var(--btn-finder);
+    background-color: #fafbfc;
+}
+
+.subject-header h1 {
+    font-size: 2rem;
+    margin-bottom: 0.4rem;
+}
+
+.subject-standard-tag {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+.subject-header.border-math { border-left-color: var(--accent-math); }
+.subject-header.border-bio { border-left-color: var(--accent-bio); }
+.subject-header.border-physics { border-left-color: var(--accent-physics); }
+.subject-header.border-chem { border-left-color: var(--accent-chem); }
+.subject-header.border-history { border-left-color: var(--accent-history); }
+.subject-header.border-geo { border-left-color: var(--accent-geo); }
+.subject-header.border-econ { border-left-color: var(--accent-econ); }
+.subject-header.border-lit { border-left-color: var(--accent-lit); }
+
+.notes-section,
+.practice-section {
+    margin-bottom: 2.5rem;
+}
+
+.notes-card {
+    background-color: var(--white-base);
+    border: 1px solid #edf2f7;
+    border-radius: 10px;
+    padding: 1.75rem;
+}
+
+.notes-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.notes-list {
+    padding-left: 1.25rem;
+    color: var(--text-main);
+}
+
+.notes-list li {
+    margin-bottom: 0.6rem;
+    line-height: 1.6;
+}
+
+.practice-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+body.dark-mode .subject-header {
+    background-color: #2d3748;
+}
+
+body.dark-mode .subject-standard-tag {
+    color: #a0aec0;
+}
+
+body.dark-mode .notes-card {
+    background-color: #2d3748;
+    border-color: #4a5568;
+}
+
+body.dark-mode .notes-list {
+    color: #e2e8f0;
+}
