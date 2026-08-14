@@ -160,35 +160,62 @@ if (promptGrid) {
     renderPrompts(promptSubject.value);
 }
 
-const themeMenuBtn = document.getElementById('themeMenuBtn');
-const themeMenuDropdown = document.getElementById('themeMenuDropdown');
-const themeOptions = document.querySelectorAll('.theme-option');
+const settingsMenuBtn = document.getElementById('settingsMenuBtn');
+const settingsMenuDropdown = document.getElementById('settingsMenuDropdown');
+const settingsOptions = document.querySelectorAll('.settings-option');
 
-if (themeMenuBtn) {
-    if (localStorage.getItem('theme') === 'dark') {
+if (settingsMenuBtn) {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    const savedTextSize = localStorage.getItem('textSize') || 'normal';
+
+    if (savedTheme === 'dark') {
         document.body.classList.add('dark-mode');
     }
 
-    themeMenuBtn.addEventListener('click', function () {
-        themeMenuDropdown.classList.toggle('open');
+    if (savedTextSize === 'large') {
+        document.body.classList.add('text-large');
+    } else if (savedTextSize === 'small') {
+        document.body.classList.add('text-small');
+    }
+
+    function markSelected() {
+        settingsOptions.forEach(function (option) {
+            option.classList.remove('selected');
+            if (option.dataset.theme === savedTheme || option.dataset.textsize === savedTextSize) {
+                option.classList.add('selected');
+            }
+        });
+    }
+    markSelected();
+
+    settingsMenuBtn.addEventListener('click', function () {
+        settingsMenuDropdown.classList.toggle('open');
     });
 
     document.addEventListener('click', function (event) {
-        if (!themeMenuBtn.contains(event.target) && !themeMenuDropdown.contains(event.target)) {
-            themeMenuDropdown.classList.remove('open');
+        if (!settingsMenuBtn.contains(event.target) && !settingsMenuDropdown.contains(event.target)) {
+            settingsMenuDropdown.classList.remove('open');
         }
     });
 
-    themeOptions.forEach(function (option) {
+    settingsOptions.forEach(function (option) {
         option.addEventListener('click', function () {
-            const theme = option.dataset.theme;
-            if (theme === 'dark') {
-                document.body.classList.add('dark-mode');
-            } else {
-                document.body.classList.remove('dark-mode');
+            if (option.dataset.theme) {
+                const theme = option.dataset.theme;
+                document.body.classList.toggle('dark-mode', theme === 'dark');
+                localStorage.setItem('theme', theme);
             }
-            localStorage.setItem('theme', theme);
-            themeMenuDropdown.classList.remove('open');
+
+            if (option.dataset.textsize) {
+                const size = option.dataset.textsize;
+                document.body.classList.remove('text-large', 'text-small');
+                if (size === 'large') document.body.classList.add('text-large');
+                if (size === 'small') document.body.classList.add('text-small');
+                localStorage.setItem('textSize', size);
+            }
+
+            settingsOptions.forEach(function (opt) { opt.classList.remove('selected'); });
+            option.classList.add('selected');
         });
     });
 }
