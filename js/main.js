@@ -246,28 +246,31 @@ if (listingGrid) {
   ];
 
     function renderListings() {
-        const level = levelFilter.value;
-        const mode = modeFilter.value;
+    const level = levelFilter.value;
+    const mode = modeFilter.value;
 
-        listingGrid.innerHTML = '';
+    listingGrid.innerHTML = '';
 
-        listings
-            .filter(function (item) {
-                return (level === 'all' || item.level === level) && (mode === 'all' || item.mode === mode);
-            })
-            .forEach(function (item) {
-                const card = document.createElement('div');
-                card.className = 'listing-card';
-                card.innerHTML =
-                    '<div class="listing-card-top">' +
-                        '<span class="listing-subject">' + item.subject + '</span>' +
-                        '<span class="listing-level">' + item.level + '</span>' +
-                    '</div>' +
-                    '<p class="listing-time">' + item.time + '</p>' +
-                    '<a href="#" class="listing-join">' + item.join + '</a>';
-                listingGrid.appendChild(card);
-            });
-    }
+    listings
+        .filter(function (item) {
+            return (level === 'all' || item.level === level) && (mode === 'all' || item.mode === mode);
+        })
+        .forEach(function (item) {
+            const card = document.createElement('div');
+            card.className = 'listing-card';
+            const joinHtml = item.link
+                ? '<a href="' + item.link + '" target="_blank" class="listing-join">' + item.join + '</a>'
+                : '<span class="listing-join-static">' + item.join + '</span>';
+            card.innerHTML =
+                '<div class="listing-card-top">' +
+                    '<span class="listing-subject">' + item.subject + '</span>' +
+                    '<span class="listing-level">' + item.level + '</span>' +
+                '</div>' +
+                '<p class="listing-time">' + item.time + '</p>' +
+                joinHtml;
+            listingGrid.appendChild(card);
+        });
+}
 
     levelFilter.addEventListener('change', renderListings);
     modeFilter.addEventListener('change', renderListings);
