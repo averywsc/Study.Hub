@@ -167,6 +167,7 @@ const settingsOptions = document.querySelectorAll('.settings-option');
 if (settingsMenuBtn) {
     const savedTheme = localStorage.getItem('theme') || 'light';
     const savedTextSize = localStorage.getItem('textSize') || 'normal';
+    const savedFont = localStorage.getItem('font') || 'default';
 
     if (savedTheme === 'dark') {
         document.body.classList.add('dark-mode');
@@ -178,10 +179,14 @@ if (settingsMenuBtn) {
         document.documentElement.classList.add('text-small');
     }
 
+    if (savedFont === 'dyslexic') {
+        document.documentElement.classList.add('font-dyslexic');
+    }
+
     function markSelected() {
         settingsOptions.forEach(function (option) {
             option.classList.remove('selected');
-            if (option.dataset.theme === savedTheme || option.dataset.textsize === savedTextSize) {
+            if (option.dataset.theme === savedTheme || option.dataset.textsize === savedTextSize || option.dataset.font === savedFont) {
                 option.classList.add('selected');
             }
         });
@@ -212,6 +217,12 @@ if (settingsMenuBtn) {
                 if (size === 'large') document.documentElement.classList.add('text-large');
                 if (size === 'small') document.documentElement.classList.add('text-small');
                 localStorage.setItem('textSize', size);
+            }
+
+            if (option.dataset.font) {
+                const font = option.dataset.font;
+                document.documentElement.classList.toggle('font-dyslexic', font === 'dyslexic');
+                localStorage.setItem('font', font);
             }
 
             settingsOptions.forEach(function (opt) { opt.classList.remove('selected'); });
