@@ -6,7 +6,7 @@
     <title>Biology - Student Hub</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body data-subject="biology">
     <nav class="navbar">
         <a href="index.html" class="nav-logo">STUDENT HUB</a>
         <div class="nav-links">
@@ -44,29 +44,25 @@
     <main class="container">
         <header class="subject-header border-bio">
             <h1>Biology</h1>
-            <p class="subject-standard-tag">Achievement Standard: AS91153 (Micro-organisms)</p>
+            <p class="subject-standard-tag">Select a standard below to view its notes and practice material.</p>
         </header>
+
+        <section class="standard-select-section">
+            <label for="standardSelect" class="standard-select-label">Standard</label>
+            <select id="standardSelect" class="standard-select">
+                <option value="AS91157">AS91157</option>
+                <option value="AS91159">AS91159</option>
+            </select>
+        </section>
 
         <section class="notes-section">
             <h2 class="resource-subheading">Key Notes</h2>
-            <div class="notes-card">
-                <h3>Micro-organisms Summary</h3>
-                <ul class="notes-list">
-                    <li>Micro-organisms include bacteria, viruses, fungi, and protozoa, each with distinct structures and life cycles.</li>
-                    <li>Bacteria are prokaryotic, reproducing by binary fission, and can be beneficial or pathogenic.</li>
-                    <li>Viruses require a host cell to replicate and are not considered fully living organisms.</li>
-                    <li>Understand the conditions micro-organisms need to grow: nutrients, temperature, moisture, and pH.</li>
-                    <li>Be able to explain how the body's immune system responds to pathogenic micro-organisms.</li>
-                </ul>
-            </div>
+            <div class="notes-card" id="notesCard"></div>
         </section>
 
         <section class="practice-section">
             <h2 class="resource-subheading">Practice Material</h2>
-            <div class="practice-buttons">
-                <a href="assets/biology-paper.pdf" target="_blank" class="btn">Download Exam Paper</a>
-                <a href="assets/biology-standard.pdf" target="_blank" class="btn-secondary">Download Standard Details</a>
-            </div>
+            <div class="practice-buttons" id="practiceButtons"></div>
         </section>
     </main>
 

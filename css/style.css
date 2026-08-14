@@ -6,6 +6,7 @@
     font-style: normal;
     font-display: swap;
 }
+
 :root {
     --white-base: #ffffff;
     --text-main: #2d3748;
@@ -251,30 +252,47 @@ body {
 .btn {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: var(--btn-finder);
     color: white;
     text-decoration: none;
     border-radius: 5px;
     margin-top: 10px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: opacity 0.2s ease;
 }
 
 .btn:hover {
-    background-color: #0056b3;
+    opacity: 0.9;
 }
 
 .btn-secondary {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #6c757d;
-    color: white;
+    background-color: transparent;
+    color: var(--btn-finder);
+    border: 1px solid var(--btn-finder);
     text-decoration: none;
     border-radius: 5px;
     margin-top: 10px;
-    margin-left: 10px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: background-color 0.2s ease;
 }
 
 .btn-secondary:hover {
-    background-color: #5a6268;
+    background-color: var(--btn-finder);
+    color: #ffffff;
+}
+
+body.dark-mode .btn-secondary {
+    color: #8bb4d6;
+    border-color: #8bb4d6;
+}
+
+body.dark-mode .btn-secondary:hover {
+    background-color: #8bb4d6;
+    color: #1a202c;
 }
 
 .resource-group {
@@ -500,6 +518,7 @@ body {
 .back-btn:hover {
     color: var(--text-main);
 }
+
 .settings-menu {
     position: relative;
 }
@@ -1008,4 +1027,32 @@ body.dark-mode .notes-list {
 
 body.dark-mode .year-label {
     color: #a0aec0;
+}
+
+.standard-select-section {
+    margin-bottom: 2rem;
+}
+
+.standard-select-label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+}
+
+.standard-select {
+    padding: 0.6rem 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-family: var(--font-clean);
+    color: var(--text-main);
+    background-color: var(--white-base);
+    min-width: 260px;
+}
+
+body.dark-mode .standard-select {
+    background-color: #1a202c;
+    color: #e2e8f0;
+    border-color: #4a5568;
 }
