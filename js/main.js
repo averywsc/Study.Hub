@@ -37,11 +37,14 @@ if (timerDisplay) {
         secondsLeft--;
         updateDisplay();
     } else {
+        clearInterval(intervalId);
+        intervalId = null;
         isBreak = !isBreak;
         secondsLeft = isBreak ? getBreakSeconds() : getFocusSeconds();
         updateDisplay();
         playTimerSound();
         alert(isBreak ? 'Focus session done! Time for a break.' : 'Break over! Back to focus.');
+        timerInputs.forEach(function (input) { input.disabled = false; });
     }
 }
 
