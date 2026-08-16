@@ -93,7 +93,7 @@ function validateTimerInputs() {
     return true;
 }
 
-   timerStartBtn.addEventListener('click', function () {
+timerStartBtn.addEventListener('click', function () {
     if (intervalId) return;
     if (!validateTimerInputs()) return;
     timerInputs.forEach(function (input) { input.disabled = true; });
@@ -115,10 +115,12 @@ function validateTimerInputs() {
     });
 
     function updateFromInputs() {
-        if (intervalId) return;
-        secondsLeft = isBreak ? getBreakSeconds() : getFocusSeconds();
-        updateDisplay();
-    }
+    if (intervalId) return;
+    const total = isBreak ? getTotalSeconds(breakInput, breakSecInput) : getTotalSeconds(focusInput, focusSecInput);
+    if (total === null) return;
+    secondsLeft = total;
+    updateDisplay();
+}
 
     focusInput.addEventListener('input', updateFromInputs);
     focusSecInput.addEventListener('input', updateFromInputs);
