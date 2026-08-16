@@ -1212,3 +1212,95 @@ body.dark-mode .intro-text {
 body.dark-mode .about-text {
     color: #e2e8f0;
 }
+
+.about-hero {
+    padding: 2.5rem 0 2rem;
+    text-align: left;
+}
+
+.about-hero h1 {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-main);
+}
+
+.about-hero p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    max-width: 550px;
+}
+
+.about-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.about-feature-card {
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.about-feature-card h2 {
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+}
+
+.about-feature-card p {
+    color: var(--text-muted);
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+.feature-resources {
+    background-color: var(--bg-resources);
+}
+
+.feature-resources h2 {
+    color: var(--btn-resources);
+}
+
+.feature-finder {
+    background-color: var(--bg-finder);
+}
+
+.feature-finder h2 {
+    color: var(--btn-finder);
+}
+
+.about-text-section {
+    max-width: 700px;
+    margin-bottom: 2rem;
+}
+
+.about-text {
+    color: var(--text-main);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+.site-footer {
+    padding: 2rem 0 1rem;
+    border-top: 1px solid #edf2f7;
+    margin-top: 2rem;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+body.dark-mode .about-hero p,
+body.dark-mode .about-feature-card p,
+body.dark-mode .site-footer {
+    color: #a0aec0;
+}
+
+body.dark-mode .about-text {
+    color: #e2e8f0;
+}
+
+body.dark-mode .site-footer {
+    border-top-color: #4a5568;
+}
+
+
