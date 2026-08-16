@@ -333,7 +333,7 @@ if (standardSelect) {
     const standardsData = {
         biology: {
             AS91157: {
-                title: "AS91157 — Demonstrate understanding of genetic variation and change",
+                title: "AS91157 —— Demonstrate understanding of genetic variation and change",
                 notes: [
                     "Covers how genetic variation arises, including mutation, meiosis, and recombination.",
                     "Understand the difference between genotype and phenotype, and how environment can influence expression.",
@@ -352,7 +352,7 @@ if (standardSelect) {
                 ]
             },
             AS91159: {
-                title: "AS91159 — Demonstrate understanding of gene expression",
+                title: "AS91159 —— Demonstrate understanding of gene expression",
                 notes: [
                     "Covers how genes are expressed through transcription and translation to produce proteins.",
                     "Understand the roles of DNA, mRNA, and ribosomes in the process of gene expression.",
@@ -380,7 +380,7 @@ if (standardSelect) {
         },
         chemistry: {
             AS91164: {
-                title: "AS91164 — Demonstrate understanding of bonding, structure, properties and energy changes",
+                title: "AS91164 —— Demonstrate understanding of bonding, structure, properties and energy changes",
                 notes: [
                     "Covers ionic, covalent, and metallic bonding, and how each affects a substance's structure.",
                     "Understand how structure (molecular vs lattice) affects melting point, solubility, and conductivity.",
@@ -399,7 +399,7 @@ if (standardSelect) {
                 ]
             },
             AS91165: {
-                title: "AS91165 — Demonstrate understanding of the properties of selected organic compounds",
+                title: "AS91165 —— Demonstrate understanding of the properties of selected organic compounds",
                 notes: [
                     "Covers naming and classifying organic compounds including alkanes, alkenes, and alcohols.",
                     "Understand reaction types such as substitution, addition, and oxidation for organic compounds.",
@@ -418,7 +418,7 @@ if (standardSelect) {
                 ]
             },
             AS91166: {
-                title: "AS91166 — Demonstrate understanding of chemical reactivity",
+                title: "AS91166 —— Demonstrate understanding of chemical reactivity",
                 notes: [
                     "Covers reaction types including acid-base, precipitation, and redox reactions.",
                     "Understand factors that affect reaction rate: concentration, temperature, surface area, and catalysts.",
@@ -439,7 +439,7 @@ if (standardSelect) {
         },
         economics: {
             AS91222: {
-                title: "AS91222 — Analyse inflation using economic concepts and models",
+                title: "AS91222 —— Analyse inflation using economic concepts and models",
                 notes: [
                     "Inflation is a sustained increase in the general price level of goods and services over time.",
                     "Distinguish between demand-pull and cost-push inflation, and their different causes.",
@@ -458,7 +458,7 @@ if (standardSelect) {
                 ]
             },
             AS91223: {
-                title: "AS91223 — Analyse international trade using economic concepts and models",
+                title: "AS91223 —— Analyse international trade using economic concepts and models",
                 notes: [
                     "Covers the theory of comparative advantage and why countries choose to trade.",
                     "Understand exchange rates and how they affect the price of imports and exports.",
@@ -479,7 +479,7 @@ if (standardSelect) {
         },
         english: {
             AS91098: {
-                title: "AS91098 — Analyse specified aspect(s) of studied written text(s), supported by evidence",
+                title: "AS91098 —— Analyse specified aspect(s) of studied written text(s), supported by evidence",
                 notes: [
                     "Covers close analysis of a written text studied in class (novel, play, or similar).",
                     "Use PEEL structure (Point, Evidence, Explain, Link) to build strong analytical paragraphs.",
@@ -498,7 +498,7 @@ if (standardSelect) {
                 ]
             },
             AS91099: {
-                title: "AS91099 — Analyse specified aspect(s) of studied visual or oral text(s), supported by evidence",
+                title: "AS91099 —— Analyse specified aspect(s) of studied visual or oral text(s), supported by evidence",
                 notes: [
                     "Covers visual and oral texts such as film, advertising, or performance studied in class.",
                     "Identify visual and verbal techniques such as camera angle, lighting, colour, symbolism, and framing.",
@@ -524,7 +524,7 @@ if (standardSelect) {
                 ]
             },
             AS91100: {
-                title: "AS91100 — Analyse significant aspects of unfamiliar written text(s) through close reading, supported by evidence",
+                title: "AS91100 —— Analyse significant aspects of unfamiliar written text(s) through close reading, supported by evidence",
                 notes: [
                     "Covers close reading of an unseen text under exam conditions, unlike AS91098 which uses a studied text.",
                     "Practice reading unfamiliar passages quickly and identifying key techniques and ideas.",
@@ -545,7 +545,7 @@ if (standardSelect) {
         },
         geography: {
             AS91240: {
-                title: "AS91240 — Demonstrate geographic understanding of a large natural environment",
+                title: "AS91240 —— Demonstrate geographic understanding of a large natural environment",
                 notes: [
                     "Covers a large natural environment (e.g. a river system, coastline, or mountain range) and the processes that shape it.",
                     "Understand physical processes and how they interact to create landforms over time.",
@@ -564,7 +564,7 @@ if (standardSelect) {
                 ]
             },
             AS91242: {
-                title: "AS91242 — Demonstrate geographic understanding of differences in development",
+                title: "AS91242 —— Demonstrate geographic understanding of differences in development",
                 notes: [
                     "Covers how and why levels of development differ between places, at a range of scales.",
                     "Understand indicators used to measure development, such as GDP, HDI, and literacy rates.",
@@ -585,7 +585,7 @@ if (standardSelect) {
         },
         history: {
             AS91231: {
-                title: "AS91231 — Examine sources of an historical event that is of significance to New Zealanders",
+                title: "AS91231 —— Examine sources of an historical event that is of significance to New Zealanders",
                 notes: [
                     "Covers evaluating primary and secondary sources related to a significant historical event.",
                     "Understand how to assess the reliability, purpose, and perspective of a historical source.",
@@ -604,7 +604,7 @@ if (standardSelect) {
                 ]
             },
             AS91233: {
-                title: "AS91233 — Examine causes and consequences of a significant historical event",
+                title: "AS91233 —— Examine causes and consequences of a significant historical event",
                 notes: [
                     "Covers identifying long-term, short-term, and trigger causes of a significant historical event.",
                     "Understand the immediate and longer-term consequences of the event studied.",
@@ -625,7 +625,7 @@ if (standardSelect) {
         },
         math: {
             AS91261: {
-                title: "AS91261 — Apply algebraic methods in solving problems",
+                title: "AS91261 —— Apply algebraic methods in solving problems",
                 notes: [
                     "Simplify algebraic expressions using expansion, factorising, and combining like terms.",
                     "Solve linear and quadratic equations, including by factorising and using the quadratic formula.",
@@ -644,7 +644,7 @@ if (standardSelect) {
                 ]
             },
             AS91262: {
-                title: "AS91262 — Apply calculus methods in solving problems",
+                title: "AS91262 —— Apply calculus methods in solving problems",
                 notes: [
                     "Sketch the graphs of functions and their gradient functions and describe the relationship between them.",
                     "Apply differentiation techniques to polynomials to find rates of change, turning points, and gradients.",
@@ -670,7 +670,7 @@ if (standardSelect) {
                 ]
             },
             AS91267: {
-                title: "AS91267 — Apply probability methods in solving problems",
+                title: "AS91267 —— Apply probability methods in solving problems",
                 notes: [
                     "Covers calculating and interpreting probabilities using tables, tree diagrams, and Venn diagrams.",
                     "Understand independent and conditional probability and how to identify which applies.",
@@ -698,7 +698,7 @@ if (standardSelect) {
         },
         physics: {
             AS91170: {
-                title: "AS91170 — Demonstrate understanding of waves",
+                title: "AS91170 —— Demonstrate understanding of waves",
                 notes: [
                     "Covers wave properties including wavelength, frequency, amplitude, and speed.",
                     "Understand reflection, refraction, diffraction, and interference of waves.",
@@ -717,7 +717,7 @@ if (standardSelect) {
                 ]
             },
             AS91171: {
-                title: "AS91171 — Demonstrate understanding of mechanics",
+                title: "AS91171 —— Demonstrate understanding of mechanics",
                 notes: [
                     "Covers forces, motion, momentum, and energy in a mechanical system.",
                     "Understand Newton's laws of motion and how to apply them to real scenarios.",
