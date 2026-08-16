@@ -40,6 +40,7 @@ if (timerDisplay) {
         isBreak = !isBreak;
         secondsLeft = isBreak ? getBreakSeconds() : getFocusSeconds();
         updateDisplay();
+        playTimerSound();
         alert(isBreak ? 'Focus session done! Time for a break.' : 'Break over! Back to focus.');
     }
 }
