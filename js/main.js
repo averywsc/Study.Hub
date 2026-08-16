@@ -46,7 +46,24 @@ if (timerDisplay) {
 
     const timerInputs = [focusInput, focusSecInput, breakInput, breakSecInput];
 
-function getTotalSeconds(minInput, secInput) {
+function playTimerSound() {
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    const oscillator = audioCtx.createOscillator();
+    const gainNode = audioCtx.createGain();
+
+    oscillator.connect(gainNode);
+    gainNode.connect(audioCtx.destination);
+
+    oscillator.type = 'sine';
+    oscillator.frequency.value = 880;
+    gainNode.gain.setValueAtTime(0.3, audioCtx.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.6);
+
+    oscillator.start();
+    oscillator.stop(audioCtx.currentTime + 0.6);
+}
+
+    function getTotalSeconds(minInput, secInput) {
     const mins = parseInt(minInput.value);
     const secs = parseInt(secInput.value);
     if (isNaN(mins) || isNaN(secs)) return null;
