@@ -46,11 +46,12 @@ if (timerDisplay) {
 
     const timerInputs = [focusInput, focusSecInput, breakInput, breakSecInput];
 
-    timerStartBtn.addEventListener('click', function () {
-        if (intervalId) return;
-        timerInputs.forEach(function (input) { input.disabled = true; });
-        intervalId = setInterval(tick, 1000);
-    });
+   timerStartBtn.addEventListener('click', function () {
+    if (intervalId) return;
+    if (!validateTimerInputs()) return;
+    timerInputs.forEach(function (input) { input.disabled = true; });
+    intervalId = setInterval(tick, 1000);
+});
 
     timerPauseBtn.addEventListener('click', function () {
         clearInterval(intervalId);
