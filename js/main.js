@@ -32,17 +32,17 @@ if (timerDisplay) {
         timerLabel.textContent = isBreak ? 'Break Time' : 'Focus Session';
     }
 
-    function tick() {
-        if (secondsLeft > 0) {
-            secondsLeft--;
-            updateDisplay();
-        } else {
-            isBreak = !isBreak;
-            secondsLeft = isBreak ? getBreakSeconds() : getFocusSeconds();
-            updateDisplay();
-            alert(isBreak ? 'Focus session done! Time for a break.' : 'Break over! Back to focus.');
-        }
+   function tick() {
+    if (secondsLeft > 0) {
+        secondsLeft--;
+        updateDisplay();
+    } else {
+        isBreak = !isBreak;
+        secondsLeft = isBreak ? getBreakSeconds() : getFocusSeconds();
+        updateDisplay();
+        alert(isBreak ? 'Focus session done! Time for a break.' : 'Break over! Back to focus.');
     }
+}
 
     const timerInputs = [focusInput, focusSecInput, breakInput, breakSecInput];
 
