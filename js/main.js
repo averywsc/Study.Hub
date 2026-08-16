@@ -46,6 +46,32 @@ if (timerDisplay) {
 
     const timerInputs = [focusInput, focusSecInput, breakInput, breakSecInput];
 
+function getTotalSeconds(minInput, secInput) {
+    const mins = parseInt(minInput.value);
+    const secs = parseInt(secInput.value);
+    if (isNaN(mins) || isNaN(secs)) return null;
+    return (mins * 60) + secs;
+}
+
+function validateTimerInputs() {
+    const focusTotal = getTotalSeconds(focusInput, focusSecInput);
+    const breakTotal = getTotalSeconds(breakInput, breakSecInput);
+
+    if (focusTotal === null || breakTotal === null) {
+        alert('Please enter valid numbers for focus and break time.');
+        return false;
+    }
+    if (focusTotal <= 0) {
+        alert('Focus time must be greater than 0 seconds.');
+        return false;
+    }
+    if (breakTotal <= 0) {
+        alert('Break time must be greater than 0 seconds.');
+        return false;
+    }
+    return true;
+}
+
    timerStartBtn.addEventListener('click', function () {
     if (intervalId) return;
     if (!validateTimerInputs()) return;
