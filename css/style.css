@@ -1304,3 +1304,18 @@ body.dark-mode .site-footer {
 }
 
 
+body.dark-mode .about-feature-card {
+    background-color: #2d3748;
+}
+
+body.dark-mode .feature-resources h2 {
+    color: #8fc49b;
+}
+
+body.dark-mode .feature-finder h2 {
+    color: #8bb4d6;
+}
+
+body.dark-mode .about-feature-card p {
+    color: #a0aec0;
+}
