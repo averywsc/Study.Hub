@@ -1,4 +1,64 @@
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="resources.html">Resources</a>
-<a href="group-finder.html">Find a group</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Student Hub</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="nav-logo">STUDENT HUB</a>
+        <div class="nav-links">
+            <div class="settings-menu">
+                <button id="settingsMenuBtn" class="settings-menu-btn">
+                    <span>Settings</span>
+                </button>
+                <div class="settings-menu-dropdown" id="settingsMenuDropdown">
+                    <div class="settings-group">
+                        <p class="settings-label">Theme</p>
+                        <button class="settings-option" data-theme="light">Light</button>
+                        <button class="settings-option" data-theme="dark">Dark</button>
+                    </div>
+                    <div class="settings-group">
+                        <p class="settings-label">Text Size</p>
+                        <button class="settings-option" data-textsize="small">Small</button>
+                        <button class="settings-option" data-textsize="normal">Normal</button>
+                        <button class="settings-option" data-textsize="large">Large</button>
+                    </div>
+                    <div class="settings-group">
+                        <p class="settings-label">Font</p>
+                        <button class="settings-option" data-font="default">Default</button>
+                        <button class="settings-option" data-font="dyslexic">Dyslexic-friendly</button>
+                    </div>
+                </div>
+            </div>
+            <a href="index.html">Home</a>
+            <a href="about.html" class="active">About</a>
+            <a href="resources.html">Resources</a>
+            <a href="group-finder.html">Find a group</a>
+        </div>
+    </nav>
+
+    <a href="javascript:history.back()" class="back-btn">← Back</a>
+
+    <main class="container">
+        <header class="page-header">
+            <h1>About Student Hub</h1>
+            <p>What this site is, and who it's built for.</p>
+        </header>
+
+        <section class="about-section">
+            <p class="about-text">Student Hub is a study platform built for Year 12 and 13 students preparing for NCEA externals. It brings together two things students usually have to find separately: a resource library and a way to connect with other students.</p>
+
+            <p class="about-text">The <strong>Resource Library</strong> covers key notes, past exam papers, and grade exemplars for common NCEA subjects, organised by standard so you can find exactly what you need.</p>
+
+            <p class="about-text">The <strong>Group Finder</strong> lets you browse or post study groups by subject, level, and mode (online or in person), along with a built-in study timer and discussion prompts to help sessions stay focused and productive.</p>
+
+            <p class="about-text">The site doesn't collect any personal data or require an account to browse, keeping it simple, private, and easy to use during exam season.</p>
+        </section>
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
