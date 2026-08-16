@@ -696,6 +696,10 @@ body.dark-mode .placeholder-area {
     border-color: #4a5568;
 }
 
+body.dark-mode .prompt-card {
+    color: #e2e8f0;
+}
+
 body.dark-mode .theme-option {
     color: #e2e8f0;
 }
