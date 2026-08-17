@@ -1,3 +1,7 @@
+
+// --- Study Timer ---
+// Handles the Pomodoro-style focus/break countdown, including input validation
+
 const timerDisplay = document.getElementById('timerDisplay');
 const timerLabel = document.getElementById('timerLabel');
 const timerStartBtn = document.getElementById('timerStartBtn');
