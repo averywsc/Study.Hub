@@ -17,9 +17,10 @@ if (timerDisplay) {
     let isBreak = false;
     let intervalId = null;
 
-    function getFocusSeconds() {
-        return (parseInt(focusInput.value) * 60) + parseInt(focusSecInput.value);
-    }
+    // Converts the minute + second inputs into a single total in seconds
+function getFocusSeconds() {
+    return (parseInt(focusInput.value) * 60) + parseInt(focusSecInput.value);
+}
 
     function getBreakSeconds() {
         return (parseInt(breakInput.value) * 60) + parseInt(breakSecInput.value);
@@ -36,7 +37,10 @@ if (timerDisplay) {
         timerLabel.textContent = isBreak ? 'Break Time' : 'Focus Session';
     }
 
-   function tick() {
+   // Runs every second while the timer is active.
+// When time runs out, it switches between focus and break mode,
+// plays a sound, and re-enables the inputs so the user must click Start again
+    function tick() {
     if (secondsLeft > 0) {
         secondsLeft--;
         updateDisplay();
@@ -71,6 +75,7 @@ function playTimerSound() {
     oscillator.stop(audioCtx.currentTime + 0.6);
 }
 
+    // Safely converts min/sec inputs to a total, returning null if either is invalid (e.g. blank)
     function getTotalSeconds(minInput, secInput) {
     const mins = parseInt(minInput.value);
     const secs = parseInt(secInput.value);
@@ -78,6 +83,8 @@ function playTimerSound() {
     return (mins * 60) + secs;
 }
 
+// Checks focus and break times are valid numbers greater than 0 before the timer can start.
+// Prevents boundary cases like 0-second sessions or blank/invalid input from breaking the timer
 function validateTimerInputs() {
     const focusTotal = getTotalSeconds(focusInput, focusSecInput);
     const breakTotal = getTotalSeconds(breakInput, breakSecInput);
@@ -134,6 +141,8 @@ timerStartBtn.addEventListener('click', function () {
     updateDisplay();
 }
 
+// --- Discussion Prompts ---
+// Stores 5 subject-specific prompts per subject, rendered as cards when a subject is selected
 const promptSubject = document.getElementById('promptSubject');
 const promptGrid = document.getElementById('promptGrid');
 
@@ -214,6 +223,9 @@ if (promptGrid) {
     renderPrompts(promptSubject.value);
 }
 
+// --- Settings Menu ---
+// Handles theme (light/dark), text size, and dyslexic-friendly font,
+// storing the user's choice in localStorage so it persists across visits
 const settingsMenuBtn = document.getElementById('settingsMenuBtn');
 const settingsMenuDropdown = document.getElementById('settingsMenuDropdown');
 const settingsOptions = document.querySelectorAll('.settings-option');
@@ -285,6 +297,9 @@ if (settingsMenuBtn) {
     });
 }
 
+// --- Group Listings ---
+// Static demo listings. Real listings would be added manually here
+// after being reviewed from Formspree submissions
 const listingGrid = document.getElementById('listingGrid');
 const levelFilter = document.getElementById('levelFilter');
 const modeFilter = document.getElementById('modeFilter');
@@ -332,6 +347,9 @@ if (listingGrid) {
     renderListings();
 }
 
+// --- Subject Standards Data ---
+// Each subject maps to its NCEA standards, each with notes and
+// links to NZQA's official exam papers and grade exemplars by year
 const standardSelect = document.getElementById('standardSelect');
 const notesCard = document.getElementById('notesCard');
 const practiceButtons = document.getElementById('practiceButtons');
@@ -747,6 +765,7 @@ if (standardSelect) {
         }
     };
 
+    // Renders the notes and practice material for whichever standard is selected in the dropdown
     function renderStandard() {
         const code = standardSelect.value;
         const data = standardsData[subjectKey][code];
