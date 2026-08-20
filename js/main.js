@@ -322,9 +322,52 @@ const listingGrid = document.getElementById('listingGrid');
 const levelFilter = document.getElementById('levelFilter');
 const modeFilter = document.getElementById('modeFilter');
 const postGroupForm = document.getElementById('postGroupForm');
+const adminLoginBtn = document.getElementById('adminLoginBtn');
+const adminLoginPanel = document.getElementById('adminLoginPanel');
+const adminPasswordInput = document.getElementById('adminPasswordInput');
+const adminLoginSubmit = document.getElementById('adminLoginSubmit');
+const adminLogoutBtn = document.getElementById('adminLogoutBtn');
+const adminLoginStatus = document.getElementById('adminLoginStatus');
 
 if (listingGrid) {
     let listings = [];
+
+    // Once the admin password is entered it's kept in memory for the rest of
+    // the page visit, so every listing's admin-delete button can use it
+    // without prompting again. It is never saved to localStorage.
+    let isAdminMode = false;
+    let adminPassword = '';
+
+    if (adminLoginBtn) {
+        adminLoginBtn.addEventListener('click', function () {
+            adminLoginPanel.classList.toggle('open');
+        });
+
+        adminLoginSubmit.addEventListener('click', function () {
+            const value = adminPasswordInput.value.trim();
+            if (!value) {
+                adminLoginStatus.textContent = 'Enter a password first.';
+                return;
+            }
+            adminPassword = value;
+            isAdminMode = true;
+            adminPasswordInput.value = '';
+            adminLoginStatus.textContent = 'Admin mode on — delete buttons are now visible on listings.';
+            adminLoginSubmit.style.display = 'none';
+            adminLogoutBtn.style.display = '';
+            renderListings();
+        });
+
+        adminLogoutBtn.addEventListener('click', function () {
+            isAdminMode = false;
+            adminPassword = '';
+            adminLoginStatus.textContent = 'Logged out of admin mode.';
+            adminLoginSubmit.style.display = '';
+            adminLogoutBtn.style.display = 'none';
+            adminLoginPanel.classList.remove('open');
+            renderListings();
+        });
+    }
 
     // Reads the map of { listingId: deleteToken } for listings this browser has posted
     function getMyTokens() {
@@ -390,6 +433,11 @@ if (listingGrid) {
                     ? '<button class="listing-delete-btn" data-id="' + item.id + '">Delete my post</button>'
                     : '';
 
+                // Admin delete only shows once logged in via the on-page admin panel
+                const adminDeleteHtml = isAdminMode
+                    ? '<button class="listing-admin-delete-btn" data-id="' + item.id + '">Admin delete</button>'
+                    : '';
+
                 card.innerHTML =
                     '<div class="listing-card-top">' +
                         '<span class="listing-subject">' + item.subject + '</span>' +
@@ -397,17 +445,29 @@ if (listingGrid) {
                     '</div>' +
                     '<p class="listing-time">' + item.time_text + '</p>' +
                     joinHtml +
-                    deleteHtml;
+                    deleteHtml +
+                    adminDeleteHtml;
                 listingGrid.appendChild(card);
             });
 
-        // Wire up delete buttons after they've been inserted into the DOM
+        // Wire up "delete my post" buttons after they've been inserted into the DOM
         document.querySelectorAll('.listing-delete-btn').forEach(function (btn) {
             btn.addEventListener('click', function () {
                 const id = btn.dataset.id;
                 const tokens = getMyTokens();
                 if (confirm('Delete this listing?')) {
                     deleteListing(id, tokens[id], null);
+                }
+            });
+        });
+
+        // Wire up admin delete buttons. The password was already entered once
+        // via the admin panel, so no per-click prompt is needed.
+        document.querySelectorAll('.listing-admin-delete-btn').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                const id = btn.dataset.id;
+                if (confirm('Delete this listing as admin?')) {
+                    deleteListing(id, null, adminPassword);
                 }
             });
         });
@@ -430,15 +490,6 @@ if (listingGrid) {
     modeFilter.addEventListener('change', renderListings);
 
     loadListings();
-
-    // Exposed globally so an admin-only control elsewhere on the page
-    // (e.g. a hidden moderator link) can trigger a password-gated delete
-    window.adminDeleteListing = function (id) {
-        const adminKey = prompt('Enter admin password:');
-        if (adminKey) {
-            deleteListing(id, null, adminKey);
-        }
-    };
 }
 
 if (postGroupForm) {
