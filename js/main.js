@@ -297,56 +297,87 @@ if (settingsMenuBtn) {
     });
 }
 
-// --- Group Listings ---
-// Static demo listings. Real listings would be added manually here
-// after being reviewed from Formspree submissions
 const listingGrid = document.getElementById('listingGrid');
 const levelFilter = document.getElementById('levelFilter');
 const modeFilter = document.getElementById('modeFilter');
+const postGroupForm = document.getElementById('postGroupForm');
 
 if (listingGrid) {
-    const listings = [
-    { subject: "Mathematics", level: "L2", mode: "online", time: "Wed 4:00 PM", join: "Google Meet", link: "https://meet.google.com/" },
-    { subject: "Biology", level: "L3", mode: "in-person", time: "Thu 3:30 PM, Library", join: "In person", link: null },
-    { subject: "Chemistry", level: "L2", mode: "online", time: "Mon 5:00 PM", join: "Discord", link: "https://discord.com/" },
-    { subject: "English", level: "L3", mode: "in-person", time: "Fri 12:30 PM, Room 12", join: "In person", link: null },
-    { subject: "Physics", level: "L3", mode: "online", time: "Tue 6:00 PM", join: "Google Meet", link: "https://meet.google.com/" },
-    { subject: "Geography", level: "L2", mode: "in-person", time: "Wed 12:30 PM, Room 4", join: "In person", link: null }
-  ];
+    let listings = [];
 
     function renderListings() {
-    const level = levelFilter.value;
-    const mode = modeFilter.value;
+        const level = levelFilter.value;
+        const mode = modeFilter.value;
 
-    listingGrid.innerHTML = '';
+        listingGrid.innerHTML = '';
 
-    listings
-        .filter(function (item) {
-            return (level === 'all' || item.level === level) && (mode === 'all' || item.mode === mode);
-        })
-        .forEach(function (item) {
-            const card = document.createElement('div');
-            card.className = 'listing-card';
-            const joinHtml = item.link
-                ? '<a href="' + item.link + '" target="_blank" class="listing-join">' + item.join + '</a>'
-                : '<span class="listing-join-static">' + item.join + '</span>';
-            card.innerHTML =
-                '<div class="listing-card-top">' +
-                    '<span class="listing-subject">' + item.subject + '</span>' +
-                    '<span class="listing-level">' + item.level + '</span>' +
-                '</div>' +
-                '<p class="listing-time">' + item.time + '</p>' +
-                joinHtml;
-            listingGrid.appendChild(card);
-        });
-}
+        listings
+            .filter(function (item) {
+                return (level === 'all' || item.level === level) && (mode === 'all' || item.mode === mode);
+            })
+            .forEach(function (item) {
+                const card = document.createElement('div');
+                card.className = 'listing-card';
+                const isLink = item.join_info.startsWith('http');
+                const joinHtml = isLink
+                    ? '<a href="' + item.join_info + '" target="_blank" class="listing-join">' + item.join_info + '</a>'
+                    : '<span class="listing-join-static">' + item.join_info + '</span>';
+                card.innerHTML =
+                    '<div class="listing-card-top">' +
+                        '<span class="listing-subject">' + item.subject + '</span>' +
+                        '<span class="listing-level">' + item.level + '</span>' +
+                    '</div>' +
+                    '<p class="listing-time">' + item.time_text + '</p>' +
+                    joinHtml;
+                listingGrid.appendChild(card);
+            });
+    }
+
+    function loadListings() {
+        fetch('https://projectspace.nz/xbbhjgpp/get-listings.php')
+            .then(function (response) { return response.json(); })
+            .then(function (data) {
+                listings = data;
+                renderListings();
+            })
+            .catch(function () {
+                listingGrid.innerHTML = '<p>Could not load listings right now. Please try again later.</p>';
+            });
+    }
 
     levelFilter.addEventListener('change', renderListings);
     modeFilter.addEventListener('change', renderListings);
 
-    renderListings();
+    loadListings();
 }
 
+if (postGroupForm) {
+    postGroupForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const formData = new FormData(postGroupForm);
+
+        fetch('https://projectspace.nz/xbbhjgpp/submit-group.php', {
+            method: 'POST',
+            body: formData
+        })
+            .then(function (response) { return response.json(); })
+            .then(function (result) {
+                if (result.success) {
+                    alert('Group posted successfully!');
+                    postGroupForm.reset();
+                    if (typeof loadListings === 'function') {
+                        loadListings();
+                    }
+                } else {
+                    alert('Something went wrong: ' + (result.error || 'please try again.'));
+                }
+            })
+            .catch(function () {
+                alert('Could not connect to the server. Please try again.');
+            });
+    });
+}
 // --- Subject Standards Data ---
 // Each subject maps to its NCEA standards, each with notes and
 // links to NZQA's official exam papers and grade exemplars by year
