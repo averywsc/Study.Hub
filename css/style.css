@@ -1324,3 +1324,38 @@ body.dark-mode .feature-finder h2 {
 body.dark-mode .about-feature-card p {
     color: #a0aec0;
 }
+
+.finder-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+.finder-sidebar {
+    position: sticky;
+    top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.finder-sidebar .timer-box {
+    max-width: 100%;
+}
+
+.finder-sidebar .prompt-grid {
+    grid-template-columns: 1fr;
+    max-height: 320px;
+    overflow-y: auto;
+}
+
+@media (max-width: 900px) {
+    .finder-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .finder-sidebar {
+        position: static;
+    }
+}
