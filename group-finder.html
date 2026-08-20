@@ -47,126 +47,132 @@
             <p>Join or post a group.</p>
         </header>
 
-        <section class="listings-section">
-            <h2 class="resource-subheading">Available Groups</h2>
+        <div class="finder-layout">
+            <div class="finder-main">
+                <section class="listings-section">
+                    <h2 class="resource-subheading">Available Groups</h2>
 
-            <div class="filter-bar">
-                <select id="levelFilter" aria-label="Filter by level">
-                    <option value="all">All Levels</option>
-                    <option value="L2">Level 2</option>
-                    <option value="L3">Level 3</option>
-                </select>
-                <select id="modeFilter" aria-label="Filter by mode">
-                    <option value="all">All Modes</option>
-                    <option value="online">Online</option>
-                    <option value="in-person">In Person</option>
-                </select>
-            </div>
-
-            <div class="listing-grid" id="listingGrid"></div>
-        </section>
-
-        <section class="post-section">
-            <h2 class="resource-subheading">Post a Group</h2>
-            <form class="post-form" action="https://formspree.io/f/mgawzoyr" method="POST">
-                <div class="post-form-row">
-                    <label>
-                        Subject
-                        <select name="subject" required>
-                            <option value="Mathematics">Mathematics</option>
-                            <option value="Biology">Biology</option>
-                            <option value="Physics">Physics</option>
-                            <option value="Chemistry">Chemistry</option>
-                            <option value="History">History</option>
-                            <option value="Geography">Geography</option>
-                            <option value="Economics">Economics</option>
-                            <option value="English">English</option>
-                        </select>
-                    </label>
-                    <label>
-                        Level
-                        <select name="level" required>
+                    <div class="filter-bar">
+                        <select id="levelFilter" aria-label="Filter by level">
+                            <option value="all">All Levels</option>
                             <option value="L2">Level 2</option>
                             <option value="L3">Level 3</option>
                         </select>
-                    </label>
-                </div>
-
-                <div class="post-form-row">
-                    <label>
-                        Mode
-                        <select name="mode" required>
+                        <select id="modeFilter" aria-label="Filter by mode">
+                            <option value="all">All Modes</option>
                             <option value="online">Online</option>
                             <option value="in-person">In Person</option>
                         </select>
-                    </label>
-                    <label>
-                        Time
-                        <input type="text" name="time" placeholder="e.g. Wed 4:00 PM" required>
-                    </label>
-                </div>
+                    </div>
 
-                <label class="post-form-full">
-                    How to join
-                    <input type="text" name="join" placeholder="e.g. Discord link or Room 4" required>
-                </label>
+                    <div class="listing-grid" id="listingGrid"></div>
+                </section>
 
-                <p class="post-form-note">Please don't include personal contact details like your phone number or full name.</p>
+                <section class="post-section">
+                    <h2 class="resource-subheading">Post a Group</h2>
+                    <form class="post-form" action="https://formspree.io/f/mgawzoyr" method="POST">
+                        <div class="post-form-row">
+                            <label>
+                                Subject
+                                <select name="subject" required>
+                                    <option value="Mathematics">Mathematics</option>
+                                    <option value="Biology">Biology</option>
+                                    <option value="Physics">Physics</option>
+                                    <option value="Chemistry">Chemistry</option>
+                                    <option value="History">History</option>
+                                    <option value="Geography">Geography</option>
+                                    <option value="Economics">Economics</option>
+                                    <option value="English">English</option>
+                                </select>
+                            </label>
+                            <label>
+                                Level
+                                <select name="level" required>
+                                    <option value="L2">Level 2</option>
+                                    <option value="L3">Level 3</option>
+                                </select>
+                            </label>
+                        </div>
 
-                <button type="submit" class="timer-btn timer-btn-primary">Submit Group</button>
-            </form>
-        </section>
+                        <div class="post-form-row">
+                            <label>
+                                Mode
+                                <select name="mode" required>
+                                    <option value="online">Online</option>
+                                    <option value="in-person">In Person</option>
+                                </select>
+                            </label>
+                            <label>
+                                Time
+                                <input type="text" name="time" placeholder="e.g. Wed 4:00 PM" required>
+                            </label>
+                        </div>
 
-        <section class="timer-section">
-            <h2 class="resource-subheading">Study Timer</h2>
-            <div class="timer-box">
-                <div class="timer-display" id="timerDisplay">25:00</div>
-                <div class="timer-label" id="timerLabel">Focus Session</div>
+                        <label class="post-form-full">
+                            How to join
+                            <input type="text" name="join" placeholder="e.g. Discord link or Room 4" required>
+                        </label>
 
-                <div class="timer-settings">
-                    <label>
-                        Focus (min)
-                        <input type="number" id="focusInput" value="25" min="0" max="90">
-                    </label>
-                    <label>
-                        Focus (sec)
-                        <input type="number" id="focusSecInput" value="0" min="0" max="59">
-                    </label>
-                    <label>
-                        Break (min)
-                        <input type="number" id="breakInput" value="5" min="0" max="30">
-                    </label>
-                    <label>
-                        Break (sec)
-                        <input type="number" id="breakSecInput" value="0" min="0" max="59">
-                    </label>
-                </div>
+                        <p class="post-form-note">Please don't include personal contact details like your phone number or full name.</p>
 
-                <div class="timer-controls">
-                    <button class="timer-btn timer-btn-primary" id="timerStartBtn">Start</button>
-                    <button class="timer-btn" id="timerPauseBtn">Pause</button>
-                    <button class="timer-btn" id="timerResetBtn">Reset</button>
-                </div>
+                        <button type="submit" class="timer-btn timer-btn-primary">Submit Group</button>
+                    </form>
+                </section>
             </div>
-        </section>
 
-        <section class="prompt-section">
-            <h2 class="resource-subheading">Discussion Prompts</h2>
-            <div class="prompt-subject-select">
-                <label for="promptSubject">Choose a subject</label>
-                <select id="promptSubject">
-                    <option value="math">Mathematics</option>
-                    <option value="biology">Biology</option>
-                    <option value="physics">Physics</option>
-                    <option value="chemistry">Chemistry</option>
-                    <option value="history">History</option>
-                    <option value="geography">Geography</option>
-                    <option value="economics">Economics</option>
-                    <option value="english">English</option>
-                </select>
-            </div>
-            <div class="prompt-grid" id="promptGrid"></div>
-        </section>
+            <aside class="finder-sidebar">
+                <section class="timer-section">
+                    <h2 class="resource-subheading">Study Timer</h2>
+                    <div class="timer-box">
+                        <div class="timer-display" id="timerDisplay">25:00</div>
+                        <div class="timer-label" id="timerLabel">Focus Session</div>
+
+                        <div class="timer-settings">
+                            <label>
+                                Focus (min)
+                                <input type="number" id="focusInput" value="25" min="0" max="90">
+                            </label>
+                            <label>
+                                Focus (sec)
+                                <input type="number" id="focusSecInput" value="0" min="0" max="59">
+                            </label>
+                            <label>
+                                Break (min)
+                                <input type="number" id="breakInput" value="5" min="0" max="30">
+                            </label>
+                            <label>
+                                Break (sec)
+                                <input type="number" id="breakSecInput" value="0" min="0" max="59">
+                            </label>
+                        </div>
+
+                        <div class="timer-controls">
+                            <button class="timer-btn timer-btn-primary" id="timerStartBtn">Start</button>
+                            <button class="timer-btn" id="timerPauseBtn">Pause</button>
+                            <button class="timer-btn" id="timerResetBtn">Reset</button>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="prompt-section">
+                    <h2 class="resource-subheading">Discussion Prompts</h2>
+                    <div class="prompt-subject-select">
+                        <label for="promptSubject">Choose a subject</label>
+                        <select id="promptSubject">
+                            <option value="math">Mathematics</option>
+                            <option value="biology">Biology</option>
+                            <option value="physics">Physics</option>
+                            <option value="chemistry">Chemistry</option>
+                            <option value="history">History</option>
+                            <option value="geography">Geography</option>
+                            <option value="economics">Economics</option>
+                            <option value="english">English</option>
+                        </select>
+                    </div>
+                    <div class="prompt-grid" id="promptGrid"></div>
+                </section>
+            </aside>
+        </div>
     </main>
 
     <script src="js/main.js"></script>
