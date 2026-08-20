@@ -1,6 +1,7 @@
-
+// ============================================================
 // --- Study Timer ---
 // Handles the Pomodoro-style focus/break countdown, including input validation
+// ============================================================
 
 const timerDisplay = document.getElementById('timerDisplay');
 const timerLabel = document.getElementById('timerLabel');
@@ -18,98 +19,101 @@ if (timerDisplay) {
     let intervalId = null;
 
     // Converts the minute + second inputs into a single total in seconds
-function getFocusSeconds() {
-    return (parseInt(focusInput.value) * 60) + parseInt(focusSecInput.value);
-}
+    function getFocusSeconds() {
+        return (parseInt(focusInput.value) * 60) + parseInt(focusSecInput.value);
+    }
 
     function getBreakSeconds() {
         return (parseInt(breakInput.value) * 60) + parseInt(breakSecInput.value);
     }
 
+    // Formats a total number of seconds as MM:SS for display
     function formatTime(seconds) {
         const mins = Math.floor(seconds / 60);
         const secs = seconds % 60;
         return String(mins).padStart(2, '0') + ':' + String(secs).padStart(2, '0');
     }
 
+    // Refreshes the on-screen timer text and the focus/break label
     function updateDisplay() {
         timerDisplay.textContent = formatTime(secondsLeft);
         timerLabel.textContent = isBreak ? 'Break Time' : 'Focus Session';
     }
 
-   // Runs every second while the timer is active.
-// When time runs out, it switches between focus and break mode,
-// plays a sound, and re-enables the inputs so the user must click Start again
+    // Runs every second while the timer is active.
+    // When time runs out, it switches between focus and break mode,
+    // plays a sound, and re-enables the inputs so the user must click Start again
     function tick() {
-    if (secondsLeft > 0) {
-        secondsLeft--;
-        updateDisplay();
-    } else {
-        clearInterval(intervalId);
-        intervalId = null;
-        isBreak = !isBreak;
-        secondsLeft = isBreak ? getBreakSeconds() : getFocusSeconds();
-        updateDisplay();
-        playTimerSound();
-        alert(isBreak ? 'Focus session done! Time for a break.' : 'Break over! Back to focus.');
-        timerInputs.forEach(function (input) { input.disabled = false; });
+        if (secondsLeft > 0) {
+            secondsLeft--;
+            updateDisplay();
+        } else {
+            clearInterval(intervalId);
+            intervalId = null;
+            isBreak = !isBreak;
+            secondsLeft = isBreak ? getBreakSeconds() : getFocusSeconds();
+            updateDisplay();
+            playTimerSound();
+            alert(isBreak ? 'Focus session done! Time for a break.' : 'Break over! Back to focus.');
+            timerInputs.forEach(function (input) { input.disabled = false; });
+        }
     }
-}
 
     const timerInputs = [focusInput, focusSecInput, breakInput, breakSecInput];
 
-function playTimerSound() {
-    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    const oscillator = audioCtx.createOscillator();
-    const gainNode = audioCtx.createGain();
+    // Plays a short beep using the Web Audio API when a session ends
+    function playTimerSound() {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const oscillator = audioCtx.createOscillator();
+        const gainNode = audioCtx.createGain();
 
-    oscillator.connect(gainNode);
-    gainNode.connect(audioCtx.destination);
+        oscillator.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
 
-    oscillator.type = 'sine';
-    oscillator.frequency.value = 880;
-    gainNode.gain.setValueAtTime(0.3, audioCtx.currentTime);
-    gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.6);
+        oscillator.type = 'sine';
+        oscillator.frequency.value = 880;
+        gainNode.gain.setValueAtTime(0.3, audioCtx.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.6);
 
-    oscillator.start();
-    oscillator.stop(audioCtx.currentTime + 0.6);
-}
+        oscillator.start();
+        oscillator.stop(audioCtx.currentTime + 0.6);
+    }
 
     // Safely converts min/sec inputs to a total, returning null if either is invalid (e.g. blank)
     function getTotalSeconds(minInput, secInput) {
-    const mins = parseInt(minInput.value);
-    const secs = parseInt(secInput.value);
-    if (isNaN(mins) || isNaN(secs)) return null;
-    return (mins * 60) + secs;
-}
-
-// Checks focus and break times are valid numbers greater than 0 before the timer can start.
-// Prevents boundary cases like 0-second sessions or blank/invalid input from breaking the timer
-function validateTimerInputs() {
-    const focusTotal = getTotalSeconds(focusInput, focusSecInput);
-    const breakTotal = getTotalSeconds(breakInput, breakSecInput);
-
-    if (focusTotal === null || breakTotal === null) {
-        alert('Please enter valid numbers for focus and break time.');
-        return false;
+        const mins = parseInt(minInput.value);
+        const secs = parseInt(secInput.value);
+        if (isNaN(mins) || isNaN(secs)) return null;
+        return (mins * 60) + secs;
     }
-    if (focusTotal <= 0) {
-        alert('Focus time must be greater than 0 seconds.');
-        return false;
-    }
-    if (breakTotal <= 0) {
-        alert('Break time must be greater than 0 seconds.');
-        return false;
-    }
-    return true;
-}
 
-timerStartBtn.addEventListener('click', function () {
-    if (intervalId) return;
-    if (!validateTimerInputs()) return;
-    timerInputs.forEach(function (input) { input.disabled = true; });
-    intervalId = setInterval(tick, 1000);
-});
+    // Checks focus and break times are valid numbers greater than 0 before the timer can start.
+    // Prevents boundary cases like 0-second sessions or blank/invalid input from breaking the timer
+    function validateTimerInputs() {
+        const focusTotal = getTotalSeconds(focusInput, focusSecInput);
+        const breakTotal = getTotalSeconds(breakInput, breakSecInput);
+
+        if (focusTotal === null || breakTotal === null) {
+            alert('Please enter valid numbers for focus and break time.');
+            return false;
+        }
+        if (focusTotal <= 0) {
+            alert('Focus time must be greater than 0 seconds.');
+            return false;
+        }
+        if (breakTotal <= 0) {
+            alert('Break time must be greater than 0 seconds.');
+            return false;
+        }
+        return true;
+    }
+
+    timerStartBtn.addEventListener('click', function () {
+        if (intervalId) return;
+        if (!validateTimerInputs()) return;
+        timerInputs.forEach(function (input) { input.disabled = true; });
+        intervalId = setInterval(tick, 1000);
+    });
 
     timerPauseBtn.addEventListener('click', function () {
         clearInterval(intervalId);
@@ -125,13 +129,14 @@ timerStartBtn.addEventListener('click', function () {
         updateDisplay();
     });
 
+    // Keeps the displayed countdown in sync while the user edits the inputs (timer not running)
     function updateFromInputs() {
-    if (intervalId) return;
-    const total = isBreak ? getTotalSeconds(breakInput, breakSecInput) : getTotalSeconds(focusInput, focusSecInput);
-    if (total === null) return;
-    secondsLeft = total;
-    updateDisplay();
-}
+        if (intervalId) return;
+        const total = isBreak ? getTotalSeconds(breakInput, breakSecInput) : getTotalSeconds(focusInput, focusSecInput);
+        if (total === null) return;
+        secondsLeft = total;
+        updateDisplay();
+    }
 
     focusInput.addEventListener('input', updateFromInputs);
     focusSecInput.addEventListener('input', updateFromInputs);
@@ -141,8 +146,11 @@ timerStartBtn.addEventListener('click', function () {
     updateDisplay();
 }
 
+// ============================================================
 // --- Discussion Prompts ---
 // Stores 5 subject-specific prompts per subject, rendered as cards when a subject is selected
+// ============================================================
+
 const promptSubject = document.getElementById('promptSubject');
 const promptGrid = document.getElementById('promptGrid');
 
@@ -206,6 +214,7 @@ if (promptGrid) {
         ]
     };
 
+    // Builds the prompt cards for the selected subject
     function renderPrompts(subject) {
         promptGrid.innerHTML = '';
         prompts[subject].forEach(function (prompt) {
@@ -223,9 +232,12 @@ if (promptGrid) {
     renderPrompts(promptSubject.value);
 }
 
+// ============================================================
 // --- Settings Menu ---
 // Handles theme (light/dark), text size, and dyslexic-friendly font,
 // storing the user's choice in localStorage so it persists across visits
+// ============================================================
+
 const settingsMenuBtn = document.getElementById('settingsMenuBtn');
 const settingsMenuDropdown = document.getElementById('settingsMenuDropdown');
 const settingsOptions = document.querySelectorAll('.settings-option');
@@ -249,6 +261,7 @@ if (settingsMenuBtn) {
         document.documentElement.classList.add('font-dyslexic');
     }
 
+    // Highlights whichever option in the dropdown matches the currently saved settings
     function markSelected() {
         settingsOptions.forEach(function (option) {
             option.classList.remove('selected');
@@ -263,6 +276,7 @@ if (settingsMenuBtn) {
         settingsMenuDropdown.classList.toggle('open');
     });
 
+    // Closes the dropdown when the user clicks anywhere outside of it
     document.addEventListener('click', function (event) {
         if (!settingsMenuBtn.contains(event.target) && !settingsMenuDropdown.contains(event.target)) {
             settingsMenuDropdown.classList.remove('open');
@@ -297,6 +311,13 @@ if (settingsMenuBtn) {
     });
 }
 
+// ============================================================
+// --- Study Group Listings ---
+// Loads/renders group listings from the backend, supports filtering,
+// posting a new group, and deleting a listing (either as its original
+// poster via a saved delete token, or as an admin via a password prompt)
+// ============================================================
+
 const listingGrid = document.getElementById('listingGrid');
 const levelFilter = document.getElementById('levelFilter');
 const modeFilter = document.getElementById('modeFilter');
@@ -305,9 +326,50 @@ const postGroupForm = document.getElementById('postGroupForm');
 if (listingGrid) {
     let listings = [];
 
+    // Reads the map of { listingId: deleteToken } for listings this browser has posted
+    function getMyTokens() {
+        return JSON.parse(localStorage.getItem('myListingTokens') || '{}');
+    }
+
+    // Remembers the delete token for a listing this browser just posted,
+    // so the "Delete my post" button can appear for it later
+    function saveMyToken(id, token) {
+        const tokens = getMyTokens();
+        tokens[id] = token;
+        localStorage.setItem('myListingTokens', JSON.stringify(tokens));
+    }
+
+    // Sends a delete request for a listing. Pass either the poster's own
+    // token (self-delete) or an admin_key (moderator override), not both required.
+    function deleteListing(id, token, adminKey) {
+        const formData = new FormData();
+        formData.append('id', id);
+        if (token) formData.append('token', token);
+        if (adminKey) formData.append('admin_key', adminKey);
+
+        fetch('https://projectspace.nz/xbbhjgpp/delete-group.php', {
+            method: 'POST',
+            body: formData
+        })
+            .then(function (response) { return response.json(); })
+            .then(function (result) {
+                if (result.success) {
+                    loadListings();
+                } else {
+                    alert(result.error || 'Could not delete listing.');
+                }
+            })
+            .catch(function () {
+                alert('Could not connect to the server.');
+            });
+    }
+
+    // Renders the listing cards currently matching the level/mode filters.
+    // Adds a "Delete my post" button only for listings this browser owns a token for.
     function renderListings() {
         const level = levelFilter.value;
         const mode = modeFilter.value;
+        const myTokens = getMyTokens();
 
         listingGrid.innerHTML = '';
 
@@ -322,17 +384,36 @@ if (listingGrid) {
                 const joinHtml = isLink
                     ? '<a href="' + item.join_info + '" target="_blank" class="listing-join">' + item.join_info + '</a>'
                     : '<span class="listing-join-static">' + item.join_info + '</span>';
+
+                const canDelete = myTokens[item.id];
+                const deleteHtml = canDelete
+                    ? '<button class="listing-delete-btn" data-id="' + item.id + '">Delete my post</button>'
+                    : '';
+
                 card.innerHTML =
                     '<div class="listing-card-top">' +
                         '<span class="listing-subject">' + item.subject + '</span>' +
                         '<span class="listing-level">' + item.level + '</span>' +
                     '</div>' +
                     '<p class="listing-time">' + item.time_text + '</p>' +
-                    joinHtml;
+                    joinHtml +
+                    deleteHtml;
                 listingGrid.appendChild(card);
             });
+
+        // Wire up delete buttons after they've been inserted into the DOM
+        document.querySelectorAll('.listing-delete-btn').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                const id = btn.dataset.id;
+                const tokens = getMyTokens();
+                if (confirm('Delete this listing?')) {
+                    deleteListing(id, tokens[id], null);
+                }
+            });
+        });
     }
 
+    // Fetches the current listings from the backend and re-renders the grid
     function loadListings() {
         fetch('https://projectspace.nz/xbbhjgpp/get-listings.php')
             .then(function (response) { return response.json(); })
@@ -349,6 +430,15 @@ if (listingGrid) {
     modeFilter.addEventListener('change', renderListings);
 
     loadListings();
+
+    // Exposed globally so an admin-only control elsewhere on the page
+    // (e.g. a hidden moderator link) can trigger a password-gated delete
+    window.adminDeleteListing = function (id) {
+        const adminKey = prompt('Enter admin password:');
+        if (adminKey) {
+            deleteListing(id, null, adminKey);
+        }
+    };
 }
 
 if (postGroupForm) {
@@ -364,6 +454,11 @@ if (postGroupForm) {
             .then(function (response) { return response.json(); })
             .then(function (result) {
                 if (result.success) {
+                    // Save the listing's delete token locally so this browser
+                    // can later show a "Delete my post" button for it
+                    if (result.id && result.delete_token) {
+                        saveMyToken(result.id, result.delete_token);
+                    }
                     alert('Group posted successfully!');
                     postGroupForm.reset();
                     if (typeof loadListings === 'function') {
@@ -378,9 +473,13 @@ if (postGroupForm) {
             });
     });
 }
+
+// ============================================================
 // --- Subject Standards Data ---
 // Each subject maps to its NCEA standards, each with notes and
 // links to NZQA's official exam papers and grade exemplars by year
+// ============================================================
+
 const standardSelect = document.getElementById('standardSelect');
 const notesCard = document.getElementById('notesCard');
 const practiceButtons = document.getElementById('practiceButtons');
