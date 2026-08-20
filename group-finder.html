@@ -50,7 +50,20 @@
         <div class="finder-layout">
             <div class="finder-main">
                 <section class="listings-section">
-                    <h2 class="resource-subheading">Available Groups</h2>
+                    <div class="listings-heading-row">
+                        <h2 class="resource-subheading">Available Groups</h2>
+                        <button id="adminLoginBtn" class="admin-login-btn">Admin</button>
+                    </div>
+
+                    <div class="admin-login-panel" id="adminLoginPanel">
+                        <label class="admin-login-label">
+                            Admin password
+                            <input type="password" id="adminPasswordInput" placeholder="Enter admin password">
+                        </label>
+                        <button id="adminLoginSubmit" class="timer-btn timer-btn-primary">Log in</button>
+                        <button id="adminLogoutBtn" class="timer-btn" style="display:none;">Log out</button>
+                        <p class="admin-login-status" id="adminLoginStatus"></p>
+                    </div>
 
                     <div class="filter-bar">
                         <select id="levelFilter" aria-label="Filter by level">
