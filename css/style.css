@@ -1359,3 +1359,20 @@ body.dark-mode .about-feature-card p {
         position: static;
     }
 }
+
+.listing-delete-btn {
+    display: block;
+    margin-top: 0.5rem;
+    background: none;
+    border: 1px solid #e57373;
+    color: #e57373;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.listing-delete-btn:hover {
+    background-color: #e57373;
+    color: #ffffff;
+}
