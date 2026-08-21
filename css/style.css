@@ -32,6 +32,10 @@
     box-sizing: border-box;
 }
 
+.is-hidden {
+    display: none;
+}
+
 body {
     font-family: var(--font-clean);
     background-color: var(--white-base);
@@ -1325,38 +1329,59 @@ body.dark-mode .about-feature-card p {
     color: #a0aec0;
 }
 
-.finder-layout {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 2rem;
-    align-items: start;
-}
-
-.finder-sidebar {
-    position: sticky;
-    top: 1.5rem;
+.finder-stack {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 2.5rem;
+    max-width: 720px;
+    margin: 0 auto;
 }
 
-.finder-sidebar .timer-box {
+.finder-stack .timer-box {
     max-width: 100%;
 }
 
-.finder-sidebar .prompt-grid {
-    grid-template-columns: 1fr;
-    max-height: 320px;
-    overflow-y: auto;
+.finder-jump-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1.25rem;
+}
+
+.jump-btn {
+    display: inline-block;
+    padding: 0.45rem 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 999px;
+    background-color: var(--white-base);
+    color: var(--btn-finder);
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.jump-btn:hover,
+.jump-btn:focus-visible {
+    background-color: var(--btn-finder);
+    color: #ffffff;
+}
+
+body.dark-mode .jump-btn {
+    background-color: #2d3748;
+    border-color: #4a5568;
+    color: #90cdf4;
+}
+
+body.dark-mode .jump-btn:hover,
+body.dark-mode .jump-btn:focus-visible {
+    background-color: #4f7797;
+    color: #ffffff;
 }
 
 @media (max-width: 900px) {
-    .finder-layout {
-        grid-template-columns: 1fr;
-    }
-
-    .finder-sidebar {
-        position: static;
+    .finder-stack {
+        max-width: 100%;
     }
 }
 
@@ -1427,51 +1452,54 @@ body.dark-mode .listing-admin-delete-btn:hover {
 }
 
 /* ===========================================================
-   Admin login — a quiet, tucked-away corner control.
-   Sits fixed in the bottom-right, faded until hovered/focused
-   so regular visitors barely notice it.
+   Admin login — buried in the page's fine print at the bottom.
+   No icon, no fixed corner widget: just a tiny, low-contrast
+   word that blends into the surrounding text.
    =========================================================== */
 
-.admin-corner {
-    position: fixed;
-    right: 1.25rem;
-    bottom: 1.25rem;
-    z-index: 50;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 0.5rem;
+.site-fineprint {
+    position: relative;
+    text-align: center;
+    margin-top: 3rem;
+    padding: 1.5rem 0 2.5rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
 }
 
-.admin-login-btn {
-    width: 2.25rem;
-    height: 2.25rem;
-    border-radius: 50%;
-    border: 1px solid #e2e8f0;
-    background-color: var(--white-base);
-    color: #cbd5e0;
-    font-size: 0.95rem;
-    line-height: 1;
+.admin-tiny-link {
+    background: none;
+    border: none;
+    padding: 0;
+    margin-left: 0.4rem;
+    font-family: var(--font-clean);
+    font-size: 0.65rem;
+    color: inherit;
+    opacity: 0.3;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-underline-offset: 2px;
     cursor: pointer;
-    opacity: 0.45;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-    transition: opacity 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    transition: opacity 0.2s ease;
 }
 
-.admin-login-btn:hover,
-.admin-login-btn:focus-visible,
-.admin-login-btn.active {
-    opacity: 1;
-    color: var(--btn-finder);
-    transform: scale(1.05);
+.admin-tiny-link:hover,
+.admin-tiny-link:focus-visible,
+.admin-tiny-link.active {
+    opacity: 0.85;
 }
 
 .admin-login-panel {
     display: none;
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
     flex-direction: column;
     gap: 0.6rem;
     width: 230px;
+    margin-bottom: 0.75rem;
     padding: 1rem;
+    text-align: left;
     border: 1px solid #e2e8f0;
     border-radius: 10px;
     background-color: var(--white-base);
@@ -1517,16 +1545,8 @@ body.dark-mode .listing-admin-delete-btn:hover {
     margin: 0;
 }
 
-body.dark-mode .admin-login-btn {
-    background-color: #2d3748;
-    border-color: #4a5568;
-    color: #4a5568;
-}
-
-body.dark-mode .admin-login-btn:hover,
-body.dark-mode .admin-login-btn:focus-visible,
-body.dark-mode .admin-login-btn.active {
-    color: #90cdf4;
+body.dark-mode .site-fineprint {
+    color: #a0aec0;
 }
 
 body.dark-mode .admin-login-panel {
