@@ -353,7 +353,7 @@ if (listingGrid) {
             adminPassword = value;
             isAdminMode = true;
             adminPasswordInput.value = '';
-            adminLoginStatus.textContent = 'Admin mode on, delete buttons are now visible on listings.';
+            adminLoginStatus.textContent = 'Admin mode on — delete buttons are now visible on listings.';
             adminLoginSubmit.classList.add('is-hidden');
             adminLogoutBtn.classList.remove('is-hidden');
             renderListings();
