@@ -497,6 +497,52 @@ if (listingGrid) {
     loadListings();
 }
 
+// --- Admin Login ---
+// A simple client-side toggle so the admin key can be attached automatically
+// to delete requests without prompting every time. The server (delete-group.php)
+// still verifies the password on every request, so this is convenience, not security.
+const adminLoginBtn = document.getElementById('adminLoginBtn');
+const adminLoginPanel = document.getElementById('adminLoginPanel');
+const adminPasswordInput = document.getElementById('adminPasswordInput');
+const adminLoginSubmit = document.getElementById('adminLoginSubmit');
+const adminLogoutBtn = document.getElementById('adminLogoutBtn');
+const adminLoginStatus = document.getElementById('adminLoginStatus');
+
+function getAdminKey() {
+    return sessionStorage.getItem('adminKey') || '';
+}
+
+function setAdminUI(isLoggedIn) {
+    if (!adminLoginStatus) return;
+    adminLoginStatus.textContent = isLoggedIn ? 'Logged in as admin.' : '';
+    adminLoginSubmit.classList.toggle('is-hidden', isLoggedIn);
+    adminPasswordInput.classList.toggle('is-hidden', isLoggedIn);
+    adminLogoutBtn.classList.toggle('is-hidden', !isLoggedIn);
+}
+
+if (adminLoginBtn) {
+    setAdminUI(!!getAdminKey());
+
+    adminLoginBtn.addEventListener('click', function () {
+        adminLoginPanel.classList.toggle('open');
+    });
+
+    adminLoginSubmit.addEventListener('click', function () {
+        const key = adminPasswordInput.value.trim();
+        if (!key) return;
+        sessionStorage.setItem('adminKey', key);
+        adminPasswordInput.value = '';
+        setAdminUI(true);
+        if (typeof renderListings === 'function') renderListings();
+    });
+
+    adminLogoutBtn.addEventListener('click', function () {
+        sessionStorage.removeItem('adminKey');
+        setAdminUI(false);
+        if (typeof renderListings === 'function') renderListings();
+    });
+}
+
 if (postGroupForm) {
     postGroupForm.addEventListener('submit', function (event) {
         event.preventDefault();
