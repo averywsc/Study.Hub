@@ -45,151 +45,155 @@
         <header class="page-header header-finder">
             <h1>Group Finder</h1>
             <p>Join or post a group.</p>
+
+            <nav class="finder-jump-nav" aria-label="Jump to section">
+                <a href="#availableGroups" class="jump-btn">Available Groups</a>
+                <a href="#postGroup" class="jump-btn">Post a Group</a>
+                <a href="#studyTimer" class="jump-btn">Study Timer</a>
+                <a href="#discussionPrompts" class="jump-btn">Discussion Prompts</a>
+            </nav>
         </header>
 
-        <div class="finder-layout">
-            <div class="finder-main">
-                <section class="listings-section">
-                    <h2 class="resource-subheading">Available Groups</h2>
+        <div class="finder-stack">
+            <section class="listings-section" id="availableGroups">
+                <h2 class="resource-subheading">Available Groups</h2>
 
-                    <div class="filter-bar">
-                        <select id="levelFilter" aria-label="Filter by level">
-                            <option value="all">All Levels</option>
-                            <option value="L2">Level 2</option>
-                            <option value="L3">Level 3</option>
-                        </select>
-                        <select id="modeFilter" aria-label="Filter by mode">
-                            <option value="all">All Modes</option>
-                            <option value="online">Online</option>
-                            <option value="in-person">In Person</option>
-                        </select>
-                    </div>
-
-                    <div class="listing-grid" id="listingGrid"></div>
-                </section>
-
-                <!-- Discreet admin login, tucked in the bottom-right corner.
-                     Faded until hovered so it doesn't draw attention from regular visitors. -->
-                <div class="admin-corner">
-                    <div class="admin-login-panel" id="adminLoginPanel">
-                        <label class="admin-login-label">
-                            Admin password
-                            <input type="password" id="adminPasswordInput" placeholder="••••••••">
-                        </label>
-                        <div class="admin-login-row">
-                            <button id="adminLoginSubmit" class="timer-btn timer-btn-primary">Log in</button>
-                            <button id="adminLogoutBtn" class="timer-btn" style="display:none;">Log out</button>
-                        </div>
-                        <p class="admin-login-status" id="adminLoginStatus"></p>
-                    </div>
-                    <button id="adminLoginBtn" class="admin-login-btn" aria-label="Admin login" title="Admin login">⚙</button>
+                <div class="filter-bar">
+                    <select id="levelFilter" aria-label="Filter by level">
+                        <option value="all">All Levels</option>
+                        <option value="L2">Level 2</option>
+                        <option value="L3">Level 3</option>
+                    </select>
+                    <select id="modeFilter" aria-label="Filter by mode">
+                        <option value="all">All Modes</option>
+                        <option value="online">Online</option>
+                        <option value="in-person">In Person</option>
+                    </select>
                 </div>
 
-                <section class="post-section">
-                    <h2 class="resource-subheading">Post a Group</h2>
-                    <form class="post-form" id="postGroupForm" action="https://projectspace.nz/xbbhjgpp/submit-group.php" method="POST">
-                        <div class="post-form-row">
-                            <label>
-                                Subject
-                                <select name="subject" required>
-                                    <option value="Mathematics">Mathematics</option>
-                                    <option value="Biology">Biology</option>
-                                    <option value="Physics">Physics</option>
-                                    <option value="Chemistry">Chemistry</option>
-                                    <option value="History">History</option>
-                                    <option value="Geography">Geography</option>
-                                    <option value="Economics">Economics</option>
-                                    <option value="English">English</option>
-                                </select>
-                            </label>
-                            <label>
-                                Level
-                                <select name="level" required>
-                                    <option value="L2">Level 2</option>
-                                    <option value="L3">Level 3</option>
-                                </select>
-                            </label>
-                        </div>
+                <div class="listing-grid" id="listingGrid"></div>
+            </section>
 
-                        <div class="post-form-row">
-                            <label>
-                                Mode
-                                <select name="mode" required>
-                                    <option value="online">Online</option>
-                                    <option value="in-person">In Person</option>
-                                </select>
-                            </label>
-                            <label>
-                                Time
-                                <input type="text" name="time" placeholder="e.g. Wed 4:00 PM" required>
-                            </label>
-                        </div>
-
-                        <label class="post-form-full">
-                            How to join
-                            <input type="text" name="join" placeholder="e.g. Discord link or Room 4" required>
+            <section class="post-section" id="postGroup">
+                <h2 class="resource-subheading">Post a Group</h2>
+                <form class="post-form" id="postGroupForm" action="https://projectspace.nz/xbbhjgpp/submit-group.php" method="POST">
+                    <div class="post-form-row">
+                        <label>
+                            Subject
+                            <select name="subject" required>
+                                <option value="Mathematics">Mathematics</option>
+                                <option value="Biology">Biology</option>
+                                <option value="Physics">Physics</option>
+                                <option value="Chemistry">Chemistry</option>
+                                <option value="History">History</option>
+                                <option value="Geography">Geography</option>
+                                <option value="Economics">Economics</option>
+                                <option value="English">English</option>
+                            </select>
                         </label>
-
-                        <p class="post-form-note">Please don't include personal contact details like your phone number or full name.</p>
-
-                        <button type="submit" class="timer-btn timer-btn-primary">Submit Group</button>
-                    </form>
-                </section>
-            </div>
-
-            <aside class="finder-sidebar">
-                <section class="timer-section">
-                    <h2 class="resource-subheading">Study Timer</h2>
-                    <div class="timer-box">
-                        <div class="timer-display" id="timerDisplay">25:00</div>
-                        <div class="timer-label" id="timerLabel">Focus Session</div>
-
-                        <div class="timer-settings">
-                            <label>
-                                Focus (min)
-                                <input type="number" id="focusInput" value="25" min="0" max="90">
-                            </label>
-                            <label>
-                                Focus (sec)
-                                <input type="number" id="focusSecInput" value="0" min="0" max="59">
-                            </label>
-                            <label>
-                                Break (min)
-                                <input type="number" id="breakInput" value="5" min="0" max="30">
-                            </label>
-                            <label>
-                                Break (sec)
-                                <input type="number" id="breakSecInput" value="0" min="0" max="59">
-                            </label>
-                        </div>
-
-                        <div class="timer-controls">
-                            <button class="timer-btn timer-btn-primary" id="timerStartBtn">Start</button>
-                            <button class="timer-btn" id="timerPauseBtn">Pause</button>
-                            <button class="timer-btn" id="timerResetBtn">Reset</button>
-                        </div>
+                        <label>
+                            Level
+                            <select name="level" required>
+                                <option value="L2">Level 2</option>
+                                <option value="L3">Level 3</option>
+                            </select>
+                        </label>
                     </div>
-                </section>
 
-                <section class="prompt-section">
-                    <h2 class="resource-subheading">Discussion Prompts</h2>
-                    <div class="prompt-subject-select">
-                        <label for="promptSubject">Choose a subject</label>
-                        <select id="promptSubject">
-                            <option value="math">Mathematics</option>
-                            <option value="biology">Biology</option>
-                            <option value="physics">Physics</option>
-                            <option value="chemistry">Chemistry</option>
-                            <option value="history">History</option>
-                            <option value="geography">Geography</option>
-                            <option value="economics">Economics</option>
-                            <option value="english">English</option>
-                        </select>
+                    <div class="post-form-row">
+                        <label>
+                            Mode
+                            <select name="mode" required>
+                                <option value="online">Online</option>
+                                <option value="in-person">In Person</option>
+                            </select>
+                        </label>
+                        <label>
+                            Time
+                            <input type="text" name="time" placeholder="e.g. Wed 4:00 PM" required>
+                        </label>
                     </div>
-                    <div class="prompt-grid" id="promptGrid"></div>
-                </section>
-            </aside>
+
+                    <label class="post-form-full">
+                        How to join
+                        <input type="text" name="join" placeholder="e.g. Discord link or Room 4" required>
+                    </label>
+
+                    <p class="post-form-note">Please don't include personal contact details like your phone number or full name.</p>
+
+                    <button type="submit" class="timer-btn timer-btn-primary">Submit Group</button>
+                </form>
+            </section>
+
+            <section class="timer-section" id="studyTimer">
+                <h2 class="resource-subheading">Study Timer</h2>
+                <div class="timer-box">
+                    <div class="timer-display" id="timerDisplay">25:00</div>
+                    <div class="timer-label" id="timerLabel">Focus Session</div>
+
+                    <div class="timer-settings">
+                        <label>
+                            Focus (min)
+                            <input type="number" id="focusInput" value="25" min="0" max="90">
+                        </label>
+                        <label>
+                            Focus (sec)
+                            <input type="number" id="focusSecInput" value="0" min="0" max="59">
+                        </label>
+                        <label>
+                            Break (min)
+                            <input type="number" id="breakInput" value="5" min="0" max="30">
+                        </label>
+                        <label>
+                            Break (sec)
+                            <input type="number" id="breakSecInput" value="0" min="0" max="59">
+                        </label>
+                    </div>
+
+                    <div class="timer-controls">
+                        <button class="timer-btn timer-btn-primary" id="timerStartBtn">Start</button>
+                        <button class="timer-btn" id="timerPauseBtn">Pause</button>
+                        <button class="timer-btn" id="timerResetBtn">Reset</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="prompt-section" id="discussionPrompts">
+                <h2 class="resource-subheading">Discussion Prompts</h2>
+                <div class="prompt-subject-select">
+                    <label for="promptSubject">Choose a subject</label>
+                    <select id="promptSubject">
+                        <option value="math">Mathematics</option>
+                        <option value="biology">Biology</option>
+                        <option value="physics">Physics</option>
+                        <option value="chemistry">Chemistry</option>
+                        <option value="history">History</option>
+                        <option value="geography">Geography</option>
+                        <option value="economics">Economics</option>
+                        <option value="english">English</option>
+                    </select>
+                </div>
+                <div class="prompt-grid" id="promptGrid"></div>
+            </section>
         </div>
+
+        <!-- Admin login. Deliberately tiny and low-contrast so it doesn't
+             draw attention from regular visitors browsing the page. -->
+        <div class="admin-login-panel" id="adminLoginPanel">
+            <label class="admin-login-label">
+                Admin password
+                <input type="password" id="adminPasswordInput" placeholder="••••••••">
+            </label>
+            <div class="admin-login-row">
+                <button id="adminLoginSubmit" class="timer-btn timer-btn-primary">Log in</button>
+                <button id="adminLogoutBtn" class="timer-btn is-hidden">Log out</button>
+            </div>
+            <p class="admin-login-status" id="adminLoginStatus"></p>
+        </div>
+        <p class="site-fineprint">
+            Student Hub — a project for Year 12/13 NCEA study.
+            <button id="adminLoginBtn" class="admin-tiny-link" aria-label="Admin login">admin</button>
+        </p>
     </main>
 
     <script src="js/main.js"></script>
