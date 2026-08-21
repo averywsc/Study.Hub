@@ -354,8 +354,8 @@ if (listingGrid) {
             isAdminMode = true;
             adminPasswordInput.value = '';
             adminLoginStatus.textContent = 'Admin mode on — delete buttons are now visible on listings.';
-            adminLoginSubmit.style.display = 'none';
-            adminLogoutBtn.style.display = '';
+            adminLoginSubmit.classList.add('is-hidden');
+            adminLogoutBtn.classList.remove('is-hidden');
             renderListings();
         });
 
@@ -363,8 +363,8 @@ if (listingGrid) {
             isAdminMode = false;
             adminPassword = '';
             adminLoginStatus.textContent = 'Logged out of admin mode.';
-            adminLoginSubmit.style.display = '';
-            adminLogoutBtn.style.display = 'none';
+            adminLoginSubmit.classList.remove('is-hidden');
+            adminLogoutBtn.classList.add('is-hidden');
             adminLoginPanel.classList.remove('open');
             adminLoginBtn.classList.remove('active');
             renderListings();
