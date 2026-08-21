@@ -430,10 +430,14 @@ if (listingGrid) {
                     ? '<a href="' + item.join_info + '" target="_blank" class="listing-join">' + item.join_info + '</a>'
                     : '<span class="listing-join-static">' + item.join_info + '</span>';
 
-                const canDelete = myTokens[item.id];
-                const deleteHtml = canDelete
-                    ? '<button class="listing-delete-btn" data-id="' + item.id + '">Delete my post</button>'
-                    : '';
+                                const canDelete = myTokens[item.id];
+                const isAdmin = !!getAdminKey();
+                let deleteHtml = '';
+                if (isAdmin) {
+                    deleteHtml = '<button class="listing-delete-btn admin-delete" data-id="' + item.id + '" data-admin="true">Delete (admin)</button>';
+                } else if (canDelete) {
+                    deleteHtml = '<button class="listing-delete-btn" data-id="' + item.id + '">Delete my post</button>';
+                }
 
                 // Admin delete only shows once logged in via the on-page admin panel
                 const adminDeleteHtml = isAdminMode
@@ -456,12 +460,18 @@ if (listingGrid) {
             });
 
         // Wire up "delete my post" buttons after they've been inserted into the DOM
-        document.querySelectorAll('.listing-delete-btn').forEach(function (btn) {
+                document.querySelectorAll('.listing-delete-btn').forEach(function (btn) {
             btn.addEventListener('click', function () {
                 const id = btn.dataset.id;
-                const tokens = getMyTokens();
-                if (confirm('Delete this listing?')) {
-                    deleteListing(id, tokens[id], null);
+                if (btn.dataset.admin) {
+                    if (confirm('Delete this listing as admin?')) {
+                        deleteListing(id, null, getAdminKey());
+                    }
+                } else {
+                    const tokens = getMyTokens();
+                    if (confirm('Delete this listing?')) {
+                        deleteListing(id, tokens[id], null);
+                    }
                 }
             });
         });
