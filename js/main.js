@@ -341,6 +341,7 @@ if (listingGrid) {
     if (adminLoginBtn) {
         adminLoginBtn.addEventListener('click', function () {
             adminLoginPanel.classList.toggle('open');
+            adminLoginBtn.classList.toggle('active');
         });
 
         adminLoginSubmit.addEventListener('click', function () {
@@ -365,6 +366,7 @@ if (listingGrid) {
             adminLoginSubmit.style.display = '';
             adminLogoutBtn.style.display = 'none';
             adminLoginPanel.classList.remove('open');
+            adminLoginBtn.classList.remove('active');
             renderListings();
         });
     }
@@ -438,6 +440,10 @@ if (listingGrid) {
                     ? '<button class="listing-admin-delete-btn" data-id="' + item.id + '">Admin delete</button>'
                     : '';
 
+                const actionsHtml = (deleteHtml || adminDeleteHtml)
+                    ? '<div class="listing-card-actions">' + deleteHtml + adminDeleteHtml + '</div>'
+                    : '';
+
                 card.innerHTML =
                     '<div class="listing-card-top">' +
                         '<span class="listing-subject">' + item.subject + '</span>' +
@@ -445,8 +451,7 @@ if (listingGrid) {
                     '</div>' +
                     '<p class="listing-time">' + item.time_text + '</p>' +
                     joinHtml +
-                    deleteHtml +
-                    adminDeleteHtml;
+                    actionsHtml;
                 listingGrid.appendChild(card);
             });
 
