@@ -18,7 +18,6 @@ if (timerDisplay) {
     let isBreak = false;
     let intervalId = null;
 
-    // Converts the minute + second inputs into a single total in seconds
     function getFocusSeconds() {
         return (parseInt(focusInput.value) * 60) + parseInt(focusSecInput.value);
     }
@@ -27,22 +26,17 @@ if (timerDisplay) {
         return (parseInt(breakInput.value) * 60) + parseInt(breakSecInput.value);
     }
 
-    // Formats a total number of seconds as MM:SS for display
     function formatTime(seconds) {
         const mins = Math.floor(seconds / 60);
         const secs = seconds % 60;
         return String(mins).padStart(2, '0') + ':' + String(secs).padStart(2, '0');
     }
 
-    // Refreshes the on-screen timer text and the focus/break label
     function updateDisplay() {
         timerDisplay.textContent = formatTime(secondsLeft);
         timerLabel.textContent = isBreak ? 'Break Time' : 'Focus Session';
     }
 
-    // Runs every second while the timer is active.
-    // When time runs out, it switches between focus and break mode,
-    // plays a sound, and re-enables the inputs so the user must click Start again
     function tick() {
         if (secondsLeft > 0) {
             secondsLeft--;
@@ -61,7 +55,6 @@ if (timerDisplay) {
 
     const timerInputs = [focusInput, focusSecInput, breakInput, breakSecInput];
 
-    // Plays a short beep using the Web Audio API when a session ends
     function playTimerSound() {
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         const oscillator = audioCtx.createOscillator();
@@ -79,7 +72,6 @@ if (timerDisplay) {
         oscillator.stop(audioCtx.currentTime + 0.6);
     }
 
-    // Safely converts min/sec inputs to a total, returning null if either is invalid (e.g. blank)
     function getTotalSeconds(minInput, secInput) {
         const mins = parseInt(minInput.value);
         const secs = parseInt(secInput.value);
@@ -87,8 +79,6 @@ if (timerDisplay) {
         return (mins * 60) + secs;
     }
 
-    // Checks focus and break times are valid numbers greater than 0 before the timer can start.
-    // Prevents boundary cases like 0-second sessions or blank/invalid input from breaking the timer
     function validateTimerInputs() {
         const focusTotal = getTotalSeconds(focusInput, focusSecInput);
         const breakTotal = getTotalSeconds(breakInput, breakSecInput);
@@ -129,7 +119,6 @@ if (timerDisplay) {
         updateDisplay();
     });
 
-    // Keeps the displayed countdown in sync while the user edits the inputs (timer not running)
     function updateFromInputs() {
         if (intervalId) return;
         const total = isBreak ? getTotalSeconds(breakInput, breakSecInput) : getTotalSeconds(focusInput, focusSecInput);
@@ -214,7 +203,6 @@ if (promptGrid) {
         ]
     };
 
-    // Builds the prompt cards for the selected subject
     function renderPrompts(subject) {
         promptGrid.innerHTML = '';
         prompts[subject].forEach(function (prompt) {
@@ -261,7 +249,6 @@ if (settingsMenuBtn) {
         document.documentElement.classList.add('font-dyslexic');
     }
 
-    // Highlights whichever option in the dropdown matches the currently saved settings
     function markSelected() {
         settingsOptions.forEach(function (option) {
             option.classList.remove('selected');
@@ -276,7 +263,6 @@ if (settingsMenuBtn) {
         settingsMenuDropdown.classList.toggle('open');
     });
 
-    // Closes the dropdown when the user clicks anywhere outside of it
     document.addEventListener('click', function (event) {
         if (!settingsMenuBtn.contains(event.target) && !settingsMenuDropdown.contains(event.target)) {
             settingsMenuDropdown.classList.remove('open');
@@ -312,205 +298,14 @@ if (settingsMenuBtn) {
 }
 
 // ============================================================
-// --- Study Group Listings ---
-// Loads/renders group listings from the backend, supports filtering,
-// posting a new group, and deleting a listing (either as its original
-// poster via a saved delete token, or as an admin via a password prompt)
-// ============================================================
-
-const listingGrid = document.getElementById('listingGrid');
-const levelFilter = document.getElementById('levelFilter');
-const modeFilter = document.getElementById('modeFilter');
-const postGroupForm = document.getElementById('postGroupForm');
-const adminLoginBtn = document.getElementById('adminLoginBtn');
-const adminLoginPanel = document.getElementById('adminLoginPanel');
-const adminPasswordInput = document.getElementById('adminPasswordInput');
-const adminLoginSubmit = document.getElementById('adminLoginSubmit');
-const adminLogoutBtn = document.getElementById('adminLogoutBtn');
-const adminLoginStatus = document.getElementById('adminLoginStatus');
-
-if (listingGrid) {
-    let listings = [];
-
-    // Once the admin password is entered it's kept in memory for the rest of
-    // the page visit, so every listing's admin-delete button can use it
-    // without prompting again. It is never saved to localStorage.
-    let isAdminMode = false;
-    let adminPassword = '';
-
-    if (adminLoginBtn) {
-        adminLoginBtn.addEventListener('click', function () {
-            adminLoginPanel.classList.toggle('open');
-            adminLoginBtn.classList.toggle('active');
-        });
-
-        adminLoginSubmit.addEventListener('click', function () {
-            const value = adminPasswordInput.value.trim();
-            if (!value) {
-                adminLoginStatus.textContent = 'Enter a password first.';
-                return;
-            }
-            adminPassword = value;
-            isAdminMode = true;
-            adminPasswordInput.value = '';
-            adminLoginStatus.textContent = 'Admin mode on — delete buttons are now visible on listings.';
-            adminLoginSubmit.classList.add('is-hidden');
-            adminLogoutBtn.classList.remove('is-hidden');
-            renderListings();
-        });
-
-        adminLogoutBtn.addEventListener('click', function () {
-            isAdminMode = false;
-            adminPassword = '';
-            adminLoginStatus.textContent = 'Logged out of admin mode.';
-            adminLoginSubmit.classList.remove('is-hidden');
-            adminLogoutBtn.classList.add('is-hidden');
-            adminLoginPanel.classList.remove('open');
-            adminLoginBtn.classList.remove('active');
-            renderListings();
-        });
-    }
-
-    // Reads the map of { listingId: deleteToken } for listings this browser has posted
-    function getMyTokens() {
-        return JSON.parse(localStorage.getItem('myListingTokens') || '{}');
-    }
-
-    // Remembers the delete token for a listing this browser just posted,
-    // so the "Delete my post" button can appear for it later
-    function saveMyToken(id, token) {
-        const tokens = getMyTokens();
-        tokens[id] = token;
-        localStorage.setItem('myListingTokens', JSON.stringify(tokens));
-    }
-
-    // Sends a delete request for a listing. Pass either the poster's own
-    // token (self-delete) or an admin_key (moderator override), not both required.
-    function deleteListing(id, token, adminKey) {
-        const formData = new FormData();
-        formData.append('id', id);
-        if (token) formData.append('token', token);
-        if (adminKey) formData.append('admin_key', adminKey);
-
-        fetch('https://projectspace.nz/xbbhjgpp/delete-group.php', {
-            method: 'POST',
-            body: formData
-        })
-            .then(function (response) { return response.json(); })
-            .then(function (result) {
-                if (result.success) {
-                    loadListings();
-                } else {
-                    alert(result.error || 'Could not delete listing.');
-                }
-            })
-            .catch(function () {
-                alert('Could not connect to the server.');
-            });
-    }
-
-    // Renders the listing cards currently matching the level/mode filters.
-    // Adds a "Delete my post" button only for listings this browser owns a token for.
-    function renderListings() {
-        const level = levelFilter.value;
-        const mode = modeFilter.value;
-        const myTokens = getMyTokens();
-
-        listingGrid.innerHTML = '';
-
-        listings
-            .filter(function (item) {
-                return (level === 'all' || item.level === level) && (mode === 'all' || item.mode === mode);
-            })
-            .forEach(function (item) {
-                const card = document.createElement('div');
-                card.className = 'listing-card';
-                const isLink = item.join_info.startsWith('http');
-                const joinHtml = isLink
-                    ? '<a href="' + item.join_info + '" target="_blank" class="listing-join">' + item.join_info + '</a>'
-                    : '<span class="listing-join-static">' + item.join_info + '</span>';
-
-                                const canDelete = myTokens[item.id];
-                const isAdmin = !!getAdminKey();
-                let deleteHtml = '';
-                if (isAdmin) {
-                    deleteHtml = '<button class="listing-delete-btn admin-delete" data-id="' + item.id + '" data-admin="true">Delete (admin)</button>';
-                } else if (canDelete) {
-                    deleteHtml = '<button class="listing-delete-btn" data-id="' + item.id + '">Delete my post</button>';
-                }
-
-                // Admin delete only shows once logged in via the on-page admin panel
-                const adminDeleteHtml = isAdminMode
-                    ? '<button class="listing-admin-delete-btn" data-id="' + item.id + '">Admin delete</button>'
-                    : '';
-
-                const actionsHtml = (deleteHtml || adminDeleteHtml)
-                    ? '<div class="listing-card-actions">' + deleteHtml + adminDeleteHtml + '</div>'
-                    : '';
-
-                card.innerHTML =
-                    '<div class="listing-card-top">' +
-                        '<span class="listing-subject">' + item.subject + '</span>' +
-                        '<span class="listing-level">' + item.level + '</span>' +
-                    '</div>' +
-                    '<p class="listing-time">' + item.time_text + '</p>' +
-                    joinHtml +
-                    actionsHtml;
-                listingGrid.appendChild(card);
-            });
-
-        // Wire up "delete my post" buttons after they've been inserted into the DOM
-                document.querySelectorAll('.listing-delete-btn').forEach(function (btn) {
-            btn.addEventListener('click', function () {
-                const id = btn.dataset.id;
-                if (btn.dataset.admin) {
-                    if (confirm('Delete this listing as admin?')) {
-                        deleteListing(id, null, getAdminKey());
-                    }
-                } else {
-                    const tokens = getMyTokens();
-                    if (confirm('Delete this listing?')) {
-                        deleteListing(id, tokens[id], null);
-                    }
-                }
-            });
-        });
-
-        // Wire up admin delete buttons. The password was already entered once
-        // via the admin panel, so no per-click prompt is needed.
-        document.querySelectorAll('.listing-admin-delete-btn').forEach(function (btn) {
-            btn.addEventListener('click', function () {
-                const id = btn.dataset.id;
-                if (confirm('Delete this listing as admin?')) {
-                    deleteListing(id, null, adminPassword);
-                }
-            });
-        });
-    }
-
-    // Fetches the current listings from the backend and re-renders the grid
-    function loadListings() {
-        fetch('https://projectspace.nz/xbbhjgpp/get-listings.php')
-            .then(function (response) { return response.json(); })
-            .then(function (data) {
-                listings = data;
-                renderListings();
-            })
-            .catch(function () {
-                listingGrid.innerHTML = '<p>Could not load listings right now. Please try again later.</p>';
-            });
-    }
-
-    levelFilter.addEventListener('change', renderListings);
-    modeFilter.addEventListener('change', renderListings);
-
-    loadListings();
-}
-
 // --- Admin Login ---
 // A simple client-side toggle so the admin key can be attached automatically
 // to delete requests without prompting every time. The server (delete-group.php)
 // still verifies the password on every request, so this is convenience, not security.
+// Declared before the listings section below, since renderListings() needs
+// getAdminKey() to decide whether to show admin delete buttons.
+// ============================================================
+
 const adminLoginBtn = document.getElementById('adminLoginBtn');
 const adminLoginPanel = document.getElementById('adminLoginPanel');
 const adminPasswordInput = document.getElementById('adminPasswordInput');
@@ -518,10 +313,12 @@ const adminLoginSubmit = document.getElementById('adminLoginSubmit');
 const adminLogoutBtn = document.getElementById('adminLogoutBtn');
 const adminLoginStatus = document.getElementById('adminLoginStatus');
 
+// Reads the currently stored admin password for this browser tab (cleared when the tab closes)
 function getAdminKey() {
     return sessionStorage.getItem('adminKey') || '';
 }
 
+// Updates the small login panel to reflect whether the user is currently logged in
 function setAdminUI(isLoggedIn) {
     if (!adminLoginStatus) return;
     adminLoginStatus.textContent = isLoggedIn ? 'Logged in as admin.' : '';
@@ -553,6 +350,138 @@ if (adminLoginBtn) {
     });
 }
 
+// ============================================================
+// --- Study Group Listings ---
+// Loads/renders group listings from the backend, supports filtering,
+// posting a new group, and deleting a listing (either as its original
+// poster via a saved delete token, or as an admin via the login above)
+// ============================================================
+
+const listingGrid = document.getElementById('listingGrid');
+const levelFilter = document.getElementById('levelFilter');
+const modeFilter = document.getElementById('modeFilter');
+const postGroupForm = document.getElementById('postGroupForm');
+
+if (listingGrid) {
+    let listings = [];
+
+    // Reads the map of { listingId: deleteToken } for listings this browser has posted
+    function getMyTokens() {
+        return JSON.parse(localStorage.getItem('myListingTokens') || '{}');
+    }
+
+    // Remembers the delete token for a listing this browser just posted,
+    // so the "Delete my post" button can appear for it later
+    function saveMyToken(id, token) {
+        const tokens = getMyTokens();
+        tokens[id] = token;
+        localStorage.setItem('myListingTokens', JSON.stringify(tokens));
+    }
+
+    // Sends a delete request for a listing. Pass either the poster's own
+    // token (self-delete) or an admin key (moderator override), not both required.
+    function deleteListing(id, token, adminKey) {
+        const formData = new FormData();
+        formData.append('id', id);
+        if (token) formData.append('token', token);
+        if (adminKey) formData.append('admin_key', adminKey);
+
+        fetch('https://projectspace.nz/xbbhjgpp/delete-group.php', {
+            method: 'POST',
+            body: formData
+        })
+            .then(function (response) { return response.json(); })
+            .then(function (result) {
+                if (result.success) {
+                    loadListings();
+                } else {
+                    alert(result.error || 'Could not delete listing.');
+                }
+            })
+            .catch(function () {
+                alert('Could not connect to the server.');
+            });
+    }
+
+    // Renders the listing cards currently matching the level/mode filters.
+    // Shows "Delete (admin)" if logged in as admin, otherwise "Delete my post"
+    // only for listings this browser holds a token for.
+    function renderListings() {
+        const level = levelFilter.value;
+        const mode = modeFilter.value;
+        const myTokens = getMyTokens();
+        const isAdmin = !!getAdminKey();
+
+        listingGrid.innerHTML = '';
+
+        listings
+            .filter(function (item) {
+                return (level === 'all' || item.level === level) && (mode === 'all' || item.mode === mode);
+            })
+            .forEach(function (item) {
+                const card = document.createElement('div');
+                card.className = 'listing-card';
+                const isLink = item.join_info.startsWith('http');
+                const joinHtml = isLink
+                    ? '<a href="' + item.join_info + '" target="_blank" class="listing-join">' + item.join_info + '</a>'
+                    : '<span class="listing-join-static">' + item.join_info + '</span>';
+
+                const canDelete = myTokens[item.id];
+                let deleteHtml = '';
+                if (isAdmin) {
+                    deleteHtml = '<button class="listing-delete-btn admin-delete" data-id="' + item.id + '" data-admin="true">Delete (admin)</button>';
+                } else if (canDelete) {
+                    deleteHtml = '<button class="listing-delete-btn" data-id="' + item.id + '">Delete my post</button>';
+                }
+
+                card.innerHTML =
+                    '<div class="listing-card-top">' +
+                        '<span class="listing-subject">' + item.subject + '</span>' +
+                        '<span class="listing-level">' + item.level + '</span>' +
+                    '</div>' +
+                    '<p class="listing-time">' + item.time_text + '</p>' +
+                    joinHtml +
+                    deleteHtml;
+                listingGrid.appendChild(card);
+            });
+
+        // Wire up delete buttons after they've been inserted into the DOM
+        document.querySelectorAll('.listing-delete-btn').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                const id = btn.dataset.id;
+                if (btn.dataset.admin) {
+                    if (confirm('Delete this listing as admin?')) {
+                        deleteListing(id, null, getAdminKey());
+                    }
+                } else {
+                    const tokens = getMyTokens();
+                    if (confirm('Delete this listing?')) {
+                        deleteListing(id, tokens[id], null);
+                    }
+                }
+            });
+        });
+    }
+
+    // Fetches the current listings from the backend and re-renders the grid
+    function loadListings() {
+        fetch('https://projectspace.nz/xbbhjgpp/get-listings.php')
+            .then(function (response) { return response.json(); })
+            .then(function (data) {
+                listings = data;
+                renderListings();
+            })
+            .catch(function () {
+                listingGrid.innerHTML = '<p>Could not load listings right now. Please try again later.</p>';
+            });
+    }
+
+    levelFilter.addEventListener('change', renderListings);
+    modeFilter.addEventListener('change', renderListings);
+
+    loadListings();
+}
+
 if (postGroupForm) {
     postGroupForm.addEventListener('submit', function (event) {
         event.preventDefault();
@@ -566,8 +495,6 @@ if (postGroupForm) {
             .then(function (response) { return response.json(); })
             .then(function (result) {
                 if (result.success) {
-                    // Save the listing's delete token locally so this browser
-                    // can later show a "Delete my post" button for it
                     if (result.id && result.delete_token) {
                         saveMyToken(result.id, result.delete_token);
                     }
@@ -1007,7 +934,6 @@ if (standardSelect) {
         }
     };
 
-    // Renders the notes and practice material for whichever standard is selected in the dropdown
     function renderStandard() {
         const code = standardSelect.value;
         const data = standardsData[subjectKey][code];
