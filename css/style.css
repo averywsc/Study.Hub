@@ -1390,10 +1390,24 @@ body.dark-mode .about-feature-card p {
     color: #ffffff;
 }
 
-body.dark-mode .jump-btn {
-    background-color: #1a202c;
-    border-color: #8bb4d6;
-    color: #8bb4d6;
+.jump-btn {
+    display: inline-block;
+    padding: 0.5rem 1.1rem;
+    border-radius: 6px;
+    background-color: transparent;
+    border: 1px solid var(--btn-finder);
+    color: var(--btn-finder);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.jump-btn:hover,
+.jump-btn:focus-visible {
+    background-color: var(--btn-finder);
+    color: #ffffff;
+
 }
 
 body.dark-mode .jump-btn:hover,
@@ -1710,4 +1724,46 @@ body.dark-mode .admin-login-label input {
 .listing-delete-btn.admin-delete:hover {
     background-color: #c0392b;
     color: #ffffff;
+}
+
+.listings-section .resource-subheading,
+.post-section .resource-subheading,
+.timer-section .resource-subheading,
+.prompt-section .resource-subheading {
+    font-size: 1.15rem;
+    letter-spacing: 0.03em;
+    text-transform: none;
+    color: var(--btn-finder);
+    border-bottom: none;
+    position: relative;
+    padding-bottom: 0.6rem;
+    margin-bottom: 1.25rem;
+}
+
+.listings-section .resource-subheading::after,
+.post-section .resource-subheading::after,
+.timer-section .resource-subheading::after,
+.prompt-section .resource-subheading::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background-color: var(--btn-finder);
+    border-radius: 2px;
+}
+
+body.dark-mode .listings-section .resource-subheading,
+body.dark-mode .post-section .resource-subheading,
+body.dark-mode .timer-section .resource-subheading,
+body.dark-mode .prompt-section .resource-subheading {
+    color: #8bb4d6;
+}
+
+body.dark-mode .listings-section .resource-subheading::after,
+body.dark-mode .post-section .resource-subheading::after,
+body.dark-mode .timer-section .resource-subheading::after,
+body.dark-mode .prompt-section .resource-subheading::after {
+    background-color: #8bb4d6;
 }
