@@ -221,6 +221,39 @@ if (promptGrid) {
 }
 
 // ============================================================
+// --- Shared Helpers ---
+// Small utilities reused by more than one feature below.
+// ============================================================
+
+// Wires a trigger button to open/close a dropdown-style panel, and closes
+// it automatically on an outside click. Also toggles an 'active' class
+// (and aria-expanded, if present) on the trigger to reflect open state.
+// Used by both the settings menu and the admin login panel below, so the
+// open/close/outside-click behavior only needs to be written once.
+function setupDismissablePanel(triggerEl, panelEl) {
+    if (!triggerEl || !panelEl) return;
+
+    triggerEl.addEventListener('click', function (event) {
+        event.stopPropagation();
+        const isOpen = panelEl.classList.toggle('open');
+        triggerEl.classList.toggle('active', isOpen);
+        if (triggerEl.hasAttribute('aria-expanded')) {
+            triggerEl.setAttribute('aria-expanded', String(isOpen));
+        }
+    });
+
+    document.addEventListener('click', function (event) {
+        if (!triggerEl.contains(event.target) && !panelEl.contains(event.target)) {
+            panelEl.classList.remove('open');
+            triggerEl.classList.remove('active');
+            if (triggerEl.hasAttribute('aria-expanded')) {
+                triggerEl.setAttribute('aria-expanded', 'false');
+            }
+        }
+    });
+}
+
+// ============================================================
 // --- Settings Menu ---
 // Handles theme (light/dark), text size, and dyslexic-friendly font,
 // storing the user's choice in localStorage so it persists across visits
@@ -259,15 +292,7 @@ if (settingsMenuBtn) {
     }
     markSelected();
 
-    settingsMenuBtn.addEventListener('click', function () {
-        settingsMenuDropdown.classList.toggle('open');
-    });
-
-    document.addEventListener('click', function (event) {
-        if (!settingsMenuBtn.contains(event.target) && !settingsMenuDropdown.contains(event.target)) {
-            settingsMenuDropdown.classList.remove('open');
-        }
-    });
+    setupDismissablePanel(settingsMenuBtn, settingsMenuDropdown);
 
     settingsOptions.forEach(function (option) {
         option.addEventListener('click', function () {
@@ -329,10 +354,7 @@ function setAdminUI(isLoggedIn) {
 
 if (adminLoginBtn) {
     setAdminUI(!!getAdminKey());
-
-    adminLoginBtn.addEventListener('click', function () {
-        adminLoginPanel.classList.toggle('open');
-    });
+    setupDismissablePanel(adminLoginBtn, adminLoginPanel);
 
     adminLoginSubmit.addEventListener('click', function () {
         const key = adminPasswordInput.value.trim();
