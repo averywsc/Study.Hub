@@ -1349,9 +1349,13 @@ body.dark-mode .about-feature-card p {
     max-width: 100%;
 }
 
-
-
-
+.finder-jump-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 2rem;
+    margin-bottom: 2.5rem;
+}
 
 .jump-btn {
     display: inline-block;
@@ -1558,46 +1562,4 @@ body.dark-mode .admin-login-status {
 .listing-delete-btn.admin-delete:hover {
     background-color: #c0392b;
     color: #ffffff;
-}
-
-.listings-section .resource-subheading,
-.post-section .resource-subheading,
-.timer-section .resource-subheading,
-.prompt-section .resource-subheading {
-    font-size: 1.15rem;
-    letter-spacing: 0.03em;
-    text-transform: none;
-    color: var(--btn-finder);
-    border-bottom: none;
-    position: relative;
-    padding-bottom: 0.6rem;
-    margin-bottom: 1.25rem;
-}
-
-.listings-section .resource-subheading::after,
-.post-section .resource-subheading::after,
-.timer-section .resource-subheading::after,
-.prompt-section .resource-subheading::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 40px;
-    height: 3px;
-    background-color: var(--btn-finder);
-    border-radius: 2px;
-}
-
-body.dark-mode .listings-section .resource-subheading,
-body.dark-mode .post-section .resource-subheading,
-body.dark-mode .timer-section .resource-subheading,
-body.dark-mode .prompt-section .resource-subheading {
-    color: var(--dark-accent);
-}
-
-body.dark-mode .listings-section .resource-subheading::after,
-body.dark-mode .post-section .resource-subheading::after,
-body.dark-mode .timer-section .resource-subheading::after,
-body.dark-mode .prompt-section .resource-subheading::after {
-    background-color: var(--dark-accent);
 }
