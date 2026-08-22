@@ -790,8 +790,20 @@ body.dark-mode .header-finder p {
 
 .listing-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.25rem;
+}
+
+@media (max-width: 700px) {
+    .listing-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .listing-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .listing-card {
@@ -1341,7 +1353,7 @@ body.dark-mode .about-feature-card p {
     display: flex;
     flex-direction: column;
     gap: 2.5rem;
-    max-width: 720px;
+    max-width: 960px;
     margin: 0 auto;
 }
 
@@ -1562,4 +1574,22 @@ body.dark-mode .admin-login-status {
 .listing-delete-btn.admin-delete:hover {
     background-color: #c0392b;
     color: #ffffff;
+}
+
+.listings-section .resource-subheading,
+.post-section .resource-subheading,
+.timer-section .resource-subheading,
+.prompt-section .resource-subheading {
+    font-size: 2rem;
+    font-weight: 700;
+    text-transform: none;
+    letter-spacing: normal;
+    color: var(--text-main);
+}
+
+body.dark-mode .listings-section .resource-subheading,
+body.dark-mode .post-section .resource-subheading,
+body.dark-mode .timer-section .resource-subheading,
+body.dark-mode .prompt-section .resource-subheading {
+    color: var(--border-light);
 }
