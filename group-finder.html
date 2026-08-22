@@ -45,14 +45,14 @@
         <header class="page-header header-finder">
             <h1>Group Finder</h1>
             <p>Join or post a group.</p>
-
-            <nav class="finder-jump-nav" aria-label="Jump to section">
-                <a href="#availableGroups" class="jump-btn">Available Groups</a>
-                <a href="#postGroup" class="jump-btn">Post a Group</a>
-                <a href="#studyTimer" class="jump-btn">Study Timer</a>
-                <a href="#discussionPrompts" class="jump-btn">Discussion Prompts</a>
-            </nav>
         </header>
+
+        <nav class="finder-jump-nav" aria-label="Jump to section">
+            <a href="#availableGroups" class="jump-btn">Available Groups</a>
+            <a href="#postGroup" class="jump-btn">Post a Group</a>
+            <a href="#studyTimer" class="jump-btn">Study Timer</a>
+            <a href="#discussionPrompts" class="jump-btn">Discussion Prompts</a>
+        </nav>
 
         <div class="finder-stack">
             <section class="listings-section" id="availableGroups">
@@ -177,20 +177,22 @@
             </section>
         </div>
 
-        <div class="admin-login-panel" id="adminLoginPanel">
-            <label class="admin-login-label">
-                Admin password
-                <input type="password" id="adminPasswordInput" placeholder="••••••••">
-            </label>
-            <div class="admin-login-row">
-                <button id="adminLoginSubmit" class="timer-btn timer-btn-primary">Log in</button>
-                <button id="adminLogoutBtn" class="timer-btn is-hidden">Log out</button>
-            </div>
-            <p class="admin-login-status" id="adminLoginStatus"></p>
-        </div>
         <p class="site-fineprint">
             Student Hub, a project for Year 12/13 NCEA study.
-            <button id="adminLoginBtn" class="admin-tiny-link" aria-label="Admin login">admin</button>
+            <span class="admin-login-wrapper">
+                <button id="adminLoginBtn" class="admin-tiny-link" aria-label="Admin login" aria-expanded="false">admin</button>
+                <div class="admin-login-panel" id="adminLoginPanel">
+                    <label class="admin-login-label">
+                        Admin password
+                        <input type="password" id="adminPasswordInput" placeholder="••••••••">
+                    </label>
+                    <div class="admin-login-row">
+                        <button id="adminLoginSubmit" class="timer-btn timer-btn-primary">Log in</button>
+                        <button id="adminLogoutBtn" class="timer-btn is-hidden">Log out</button>
+                    </div>
+                    <p class="admin-login-status" id="adminLoginStatus"></p>
+                </div>
+            </span>
         </p>
     </main>
 
