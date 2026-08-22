@@ -1364,45 +1364,41 @@ body.dark-mode .about-feature-card p {
     transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.jump-btn::before {
-    content: "↓";
-    font-size: 0.75rem;
+.finder-jump-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+}
+
+.jump-btn {
+    display: inline-block;
+    padding: 0.5rem 1.1rem;
+    border-radius: 6px;
+    background-color: var(--white-base);
+    border: 1px solid var(--btn-finder);
     color: var(--btn-finder);
-    transition: color 0.15s ease;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .jump-btn:hover,
 .jump-btn:focus-visible {
     background-color: var(--btn-finder);
     color: #ffffff;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 16px rgba(79, 119, 151, 0.25);
-}
-
-.jump-btn:hover::before,
-.jump-btn:focus-visible::before {
-    color: #ffffff;
 }
 
 body.dark-mode .jump-btn {
-    background-color: rgba(144, 205, 244, 0.1);
-    color: #90cdf4;
-    box-shadow: none;
-}
-
-body.dark-mode .jump-btn::before {
-    color: #90cdf4;
+    background-color: #1a202c;
+    border-color: #8bb4d6;
+    color: #8bb4d6;
 }
 
 body.dark-mode .jump-btn:hover,
 body.dark-mode .jump-btn:focus-visible {
-    background-color: #90cdf4;
-    color: #1a202c;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35);
-}
-
-body.dark-mode .jump-btn:hover::before,
-body.dark-mode .jump-btn:focus-visible::before {
+    background-color: #8bb4d6;
     color: #1a202c;
 }
 
