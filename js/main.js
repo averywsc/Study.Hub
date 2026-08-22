@@ -505,6 +505,29 @@ if (listingGrid) {
 }
 
 if (postGroupForm) {
+    const modeSelect = document.getElementById('modeSelect');
+    const joinLabel = document.getElementById('joinLabel');
+    const joinInput = document.getElementById('joinInput');
+
+    // Swaps the "how to join" field's label/placeholder depending on mode,
+    // since an online group needs a link (Zoom, Google Meet, Discord, etc.)
+    // while an in-person group needs a physical location instead.
+    function updateJoinFieldForMode() {
+        if (!modeSelect || !joinLabel || !joinInput) return;
+        if (modeSelect.value === 'online') {
+            joinLabel.textContent = 'Link to join (Zoom, Google Meet, Discord, etc.)';
+            joinInput.placeholder = 'e.g. https://meet.google.com/xxx-xxxx-xxx';
+        } else {
+            joinLabel.textContent = 'Where to meet';
+            joinInput.placeholder = 'e.g. Room 4, Library';
+        }
+    }
+
+    if (modeSelect) {
+        modeSelect.addEventListener('change', updateJoinFieldForMode);
+        updateJoinFieldForMode();
+    }
+
     postGroupForm.addEventListener('submit', function (event) {
         event.preventDefault();
 

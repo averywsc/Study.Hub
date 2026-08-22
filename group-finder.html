@@ -103,7 +103,7 @@
                     <div class="post-form-row">
                         <label>
                             Mode
-                            <select name="mode" required>
+                            <select name="mode" id="modeSelect" required>
                                 <option value="online">Online</option>
                                 <option value="in-person">In Person</option>
                             </select>
@@ -115,8 +115,8 @@
                     </div>
 
                     <label class="post-form-full">
-                        How to join
-                        <input type="text" name="join" placeholder="e.g. Discord link or Room 4" required>
+                        <span id="joinLabel">Link to join (Zoom, Google Meet, Discord, etc.)</span>
+                        <input type="text" name="join" id="joinInput" placeholder="e.g. https://meet.google.com/xxx-xxxx-xxx" required>
                     </label>
 
                     <p class="post-form-note">Please don't include personal contact details like your phone number or full name.</p>
