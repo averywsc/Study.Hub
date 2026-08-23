@@ -1600,3 +1600,7 @@ body.dark-mode .timer-section .resource-subheading,
 body.dark-mode .prompt-section .resource-subheading {
     color: var(--border-light);
 }
+
+.listing-delete-btn {
+    margin-left: 18px;
+}
