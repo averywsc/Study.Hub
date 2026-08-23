@@ -471,8 +471,9 @@ if (listingGrid) {
                 const card = document.createElement('div');
                 card.className = 'listing-card';
                 const isLink = item.join_info.startsWith('http');
+                const linkText = (item.join_label && item.join_label.trim()) ? item.join_label.trim() : item.join_info;
                 const joinHtml = isLink
-                    ? '<a href="' + item.join_info + '" target="_blank" class="listing-join">' + item.join_info + '</a>'
+                    ? '<a href="' + item.join_info + '" target="_blank" class="listing-join">' + linkText + '</a>'
                     : '<span class="listing-join-static">' + item.join_info + '</span>';
 
                 const canDelete = myTokens[item.id];
@@ -535,18 +536,25 @@ if (postGroupForm) {
     const modeSelect = document.getElementById('modeSelect');
     const joinLabel = document.getElementById('joinLabel');
     const joinInput = document.getElementById('joinInput');
+    const joinNameField = document.getElementById('joinNameField');
+    const joinNameInput = document.getElementById('joinNameInput');
 
     // Swaps the "how to join" field's label/placeholder depending on mode,
     // since an online group needs a link (Zoom, Google Meet, Discord, etc.)
-    // while an in-person group needs a physical location instead.
+    // while an in-person group needs a physical location instead. The
+    // optional "link name" field only makes sense for online groups, so
+    // it's hidden (and cleared) for in-person ones.
     function updateJoinFieldForMode() {
         if (!modeSelect || !joinLabel || !joinInput) return;
         if (modeSelect.value === 'online') {
             joinLabel.textContent = 'Link to join (Zoom, Google Meet, Discord, etc.)';
             joinInput.placeholder = 'e.g. https://meet.google.com/xxx-xxxx-xxx';
+            if (joinNameField) joinNameField.classList.remove('is-hidden');
         } else {
             joinLabel.textContent = 'Where to meet';
             joinInput.placeholder = 'e.g. Room 4, Library';
+            if (joinNameField) joinNameField.classList.add('is-hidden');
+            if (joinNameInput) joinNameInput.value = '';
         }
     }
 
