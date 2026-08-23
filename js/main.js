@@ -427,6 +427,21 @@ if (listingGrid) {
         localStorage.setItem('myListingTokens', JSON.stringify(tokens));
     }
 
+    // Reads the map of { listingId: joinLabel } for listings this browser has posted.
+    // This is a fallback so the poster still sees their own link name even if the
+    // backend (submit-group.php / get-listings.php) doesn't yet store/return join_label.
+    function getMyLinkLabels() {
+        return JSON.parse(localStorage.getItem('myListingLinkLabels') || '{}');
+    }
+
+    // Remembers the link name a listing was posted with, keyed by listing id
+    function saveMyLinkLabel(id, label) {
+        if (!label) return;
+        const labels = getMyLinkLabels();
+        labels[id] = label;
+        localStorage.setItem('myListingLinkLabels', JSON.stringify(labels));
+    }
+
     // Sends a delete request for a listing. Pass either the poster's own
     // token (self-delete) or an admin key (moderator override), not both required.
     function deleteListing(id, token, adminKey) {
@@ -471,7 +486,11 @@ if (listingGrid) {
                 const card = document.createElement('div');
                 card.className = 'listing-card';
                 const isLink = item.join_info.startsWith('http');
-                const linkText = (item.join_label && item.join_label.trim()) ? item.join_label.trim() : item.join_info;
+                const myLinkLabels = getMyLinkLabels();
+                const linkLabel = (item.join_label && item.join_label.trim())
+                    ? item.join_label.trim()
+                    : (myLinkLabels[item.id] || '');
+                const linkText = linkLabel || item.join_info;
                 const joinHtml = isLink
                     ? '<a href="' + item.join_info + '" target="_blank" class="listing-join">' + linkText + '</a>'
                     : '<span class="listing-join-static">' + item.join_info + '</span>';
@@ -567,6 +586,7 @@ if (postGroupForm) {
         event.preventDefault();
 
         const formData = new FormData(postGroupForm);
+        const enteredLinkLabel = joinNameInput ? joinNameInput.value.trim() : '';
 
         fetch('https://projectspace.nz/xbbhjgpp/submit-group.php', {
             method: 'POST',
@@ -578,8 +598,12 @@ if (postGroupForm) {
                     if (result.id && result.delete_token) {
                         saveMyToken(result.id, result.delete_token);
                     }
+                    if (result.id && enteredLinkLabel && typeof saveMyLinkLabel === 'function') {
+                        saveMyLinkLabel(result.id, enteredLinkLabel);
+                    }
                     alert('Group posted successfully!');
                     postGroupForm.reset();
+                    updateJoinFieldForMode();
                     if (typeof loadListings === 'function') {
                         loadListings();
                     }

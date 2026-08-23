@@ -923,6 +923,10 @@ body.dark-mode .filter-bar select {
     margin-bottom: 1rem;
 }
 
+.post-form-full.is-hidden {
+    display: none;
+}
+
 .post-form select,
 .post-form input {
     padding: 0.6rem;
