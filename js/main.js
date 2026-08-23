@@ -331,12 +331,12 @@ if (settingsMenuBtn) {
 // getAdminKey() to decide whether to show admin delete buttons.
 // ============================================================
 
-const adminLoginBtn = document.getElementById('adminLoginBtn');
-const adminLoginPanel = document.getElementById('adminLoginPanel');
-const adminPasswordInput = document.getElementById('adminPasswordInput');
-const adminLoginSubmit = document.getElementById('adminLoginSubmit');
-const adminLogoutBtn = document.getElementById('adminLogoutBtn');
-const adminLoginStatus = document.getElementById('adminLoginStatus');
+const shAdminToggle = document.getElementById('shAdminToggle');
+const shAdminPanel = document.getElementById('shAdminPanel');
+const shAdminPassword = document.getElementById('shAdminPassword');
+const shAdminLoginBtn = document.getElementById('shAdminLoginBtn');
+const shAdminLogoutBtn = document.getElementById('shAdminLogoutBtn');
+const shAdminStatus = document.getElementById('shAdminStatus');
 
 // Reads the currently stored admin password for this browser tab (cleared when the tab closes)
 function getAdminKey() {
@@ -345,27 +345,54 @@ function getAdminKey() {
 
 // Updates the small login panel to reflect whether the user is currently logged in
 function setAdminUI(isLoggedIn) {
-    if (!adminLoginStatus) return;
-    adminLoginStatus.textContent = isLoggedIn ? 'Logged in as admin.' : '';
-    adminLoginSubmit.classList.toggle('is-hidden', isLoggedIn);
-    adminPasswordInput.classList.toggle('is-hidden', isLoggedIn);
-    adminLogoutBtn.classList.toggle('is-hidden', !isLoggedIn);
+    if (!shAdminStatus) return;
+    shAdminStatus.textContent = isLoggedIn ? 'Logged in as admin.' : '';
+    shAdminLoginBtn.classList.toggle('is-hidden', isLoggedIn);
+    shAdminPassword.classList.toggle('is-hidden', isLoggedIn);
+    shAdminLogoutBtn.classList.toggle('is-hidden', !isLoggedIn);
 }
 
-if (adminLoginBtn) {
-    setAdminUI(!!getAdminKey());
-    setupDismissablePanel(adminLoginBtn, adminLoginPanel);
+function openShAdminPanel() {
+    shAdminPanel.hidden = false;
+    shAdminToggle.setAttribute('aria-expanded', 'true');
+}
 
-    adminLoginSubmit.addEventListener('click', function () {
-        const key = adminPasswordInput.value.trim();
+function closeShAdminPanel() {
+    shAdminPanel.hidden = true;
+    shAdminToggle.setAttribute('aria-expanded', 'false');
+}
+
+if (shAdminToggle && shAdminPanel) {
+    setAdminUI(!!getAdminKey());
+
+    shAdminToggle.addEventListener('click', function (event) {
+        event.stopPropagation();
+        if (shAdminPanel.hidden) {
+            openShAdminPanel();
+        } else {
+            closeShAdminPanel();
+        }
+    });
+
+    // Keep the panel open when clicking inside it; close on any outside click
+    shAdminPanel.addEventListener('click', function (event) {
+        event.stopPropagation();
+    });
+
+    document.addEventListener('click', function () {
+        if (!shAdminPanel.hidden) closeShAdminPanel();
+    });
+
+    shAdminLoginBtn.addEventListener('click', function () {
+        const key = shAdminPassword.value.trim();
         if (!key) return;
         sessionStorage.setItem('adminKey', key);
-        adminPasswordInput.value = '';
+        shAdminPassword.value = '';
         setAdminUI(true);
         if (typeof renderListings === 'function') renderListings();
     });
 
-    adminLogoutBtn.addEventListener('click', function () {
+    shAdminLogoutBtn.addEventListener('click', function () {
         sessionStorage.removeItem('adminKey');
         setAdminUI(false);
         if (typeof renderListings === 'function') renderListings();
