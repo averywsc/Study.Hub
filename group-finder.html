@@ -179,18 +179,18 @@
 
         <p class="site-fineprint">
             Student Hub, a project for Year 12/13 NCEA study.
-            <span class="admin-login-wrapper">
-            <button id="adminLoginBtn" class="admin-tiny-link" aria-label="Admin login" aria-expanded="false">admin</button>
-            <div class="admin-login-panel" id="adminLoginPanel">
-                    <label class="admin-login-label">
+            <span class="sh-admin" id="shAdminRoot">
+                <button type="button" id="shAdminToggle" class="sh-admin-toggle" aria-haspopup="true" aria-expanded="false">admin</button>
+                <div id="shAdminPanel" class="sh-admin-panel" hidden>
+                    <label class="sh-admin-field">
                         Admin password
-                        <input type="password" id="adminPasswordInput" placeholder="••••••••">
+                        <input type="password" id="shAdminPassword" placeholder="••••••••" autocomplete="off">
                     </label>
-                    <div class="admin-login-row">
-                        <button id="adminLoginSubmit" class="timer-btn timer-btn-primary">Log in</button>
-                        <button id="adminLogoutBtn" class="timer-btn is-hidden">Log out</button>
+                    <div class="sh-admin-actions">
+                        <button type="button" id="shAdminLoginBtn" class="timer-btn timer-btn-primary">Log in</button>
+                        <button type="button" id="shAdminLogoutBtn" class="timer-btn is-hidden">Log out</button>
                     </div>
-                    <p class="admin-login-status" id="adminLoginStatus"></p>
+                    <p class="sh-admin-status" id="shAdminStatus"></p>
                 </div>
             </span>
         </p>
