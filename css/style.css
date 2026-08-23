@@ -1604,3 +1604,37 @@ body.dark-mode .prompt-section .resource-subheading {
 .listing-delete-btn {
     margin-left: 18px;
 }
+
+.admin-login-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.admin-login-panel {
+    display: none;
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    flex-direction: column;
+    gap: 0.6rem;
+    width: 230px;
+    margin-bottom: 0.75rem;
+    padding: 1rem;
+    text-align: left;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    background-color: var(--white-base);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    z-index: 20;
+}
+
+.admin-login-panel.open {
+    display: flex;
+}
+
+body.dark-mode .admin-login-panel {
+    background-color: #2d3748;
+    border-color: #4a5568;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
