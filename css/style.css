@@ -821,6 +821,10 @@ body.dark-mode .header-finder p {
     margin-bottom: 0.5rem;
 }
 
+.listing-delete-btn {
+    margin-left: 18px;
+}
+
 .listing-subject {
     font-size: 1.1rem;
     font-weight: 700;
