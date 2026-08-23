@@ -1468,7 +1468,18 @@ body.dark-mode .listing-admin-delete-btn:hover {
     color: var(--text-muted);
 }
 
-.admin-tiny-link {
+body.dark-mode .site-fineprint {
+    color: var(--dark-text-muted);
+}
+
+/* --- Admin login (sh-admin-*) --- */
+
+.sh-admin {
+    position: relative;
+    display: inline-block;
+}
+
+.sh-admin-toggle {
     background: none;
     border: none;
     padding: 0;
@@ -1484,25 +1495,20 @@ body.dark-mode .listing-admin-delete-btn:hover {
     transition: opacity 0.2s ease;
 }
 
-.admin-tiny-link:hover,
-.admin-tiny-link:focus-visible,
-.admin-tiny-link.active {
+.sh-admin-toggle:hover,
+.sh-admin-toggle:focus-visible,
+.sh-admin-toggle[aria-expanded="true"] {
     opacity: 0.85;
 }
 
-.admin-login-wrapper {
-    position: relative;
-    display: inline-block;
-}
-
-.admin-login-panel {
-    display: none;
+.sh-admin-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
     position: absolute;
     bottom: 100%;
     left: 50%;
     transform: translateX(-50%);
-    flex-direction: column;
-    gap: 0.6rem;
     width: 230px;
     margin-bottom: 0.75rem;
     padding: 1rem;
@@ -1514,11 +1520,11 @@ body.dark-mode .listing-admin-delete-btn:hover {
     z-index: 20;
 }
 
-.admin-login-panel.open {
-    display: flex;
+.sh-admin-panel[hidden] {
+    display: none;
 }
 
-.admin-login-label {
+.sh-admin-field {
     display: flex;
     flex-direction: column;
     gap: 0.35rem;
@@ -1526,7 +1532,7 @@ body.dark-mode .listing-admin-delete-btn:hover {
     color: var(--text-muted);
 }
 
-.admin-login-label input {
+.sh-admin-field input {
     padding: 0.5rem 0.7rem;
     border: 1px solid var(--border-light);
     border-radius: 6px;
@@ -1536,44 +1542,40 @@ body.dark-mode .listing-admin-delete-btn:hover {
     color: var(--text-main);
 }
 
-.admin-login-row {
+.sh-admin-actions {
     display: flex;
     gap: 0.5rem;
 }
 
-.admin-login-row .timer-btn {
+.sh-admin-actions .timer-btn {
     flex: 1;
     padding: 0.45rem 0.75rem;
     font-size: 0.8rem;
 }
 
-.admin-login-status {
+.sh-admin-status {
     font-size: 0.75rem;
     color: var(--text-muted);
     margin: 0;
 }
 
-body.dark-mode .site-fineprint {
-    color: var(--dark-text-muted);
-}
-
-body.dark-mode .admin-login-panel {
+body.dark-mode .sh-admin-panel {
     background-color: var(--dark-bg-card);
     border-color: var(--dark-border);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
 }
 
-body.dark-mode .admin-login-label {
+body.dark-mode .sh-admin-field {
     color: var(--dark-text-muted);
 }
 
-body.dark-mode .admin-login-label input {
+body.dark-mode .sh-admin-field input {
     background-color: var(--dark-bg-page);
     border-color: var(--dark-border);
     color: var(--border-light);
 }
 
-body.dark-mode .admin-login-status {
+body.dark-mode .sh-admin-status {
     color: var(--dark-text-muted);
 }
 
