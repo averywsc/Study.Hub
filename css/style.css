@@ -1371,37 +1371,35 @@ body.dark-mode .about-feature-card p {
 
 .jump-btn {
     display: inline-block;
-    padding: 0.6rem 1.1rem;
-    border-radius: 8px;
+    padding: 0.5rem 1.1rem;
+    border-radius: 6px;
     background-color: var(--white-base);
-    border: 1px solid var(--border-lighter);
-    border-left: 4px solid var(--btn-finder);
+    border: 1px solid #edf2f7;
     color: var(--btn-finder);
     text-decoration: none;
     font-size: 0.85rem;
     font-weight: 600;
-    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .jump-btn:hover,
 .jump-btn:focus-visible {
     background-color: var(--btn-finder);
-    border-color: var(--btn-finder);
     color: #ffffff;
-
+    border-color: var(--btn-finder);
 }
 
 body.dark-mode .jump-btn {
-    background-color: var(--dark-bg-card);
-    border-color: var(--dark-border);
-    border-left-color: var(--dark-accent);
-    color: var(--dark-accent);
+    background-color: #2d3748;
+    border-color: #4a5568;
+    color: #8bb4d6;
 }
 
 body.dark-mode .jump-btn:hover,
 body.dark-mode .jump-btn:focus-visible {
-    background-color: var(--dark-accent);
-    color: var(--dark-bg-page);
+    background-color: #8bb4d6;
+    color: #1a202c;
+    border-color: #8bb4d6;
 }
 
 @media (max-width: 900px) {
