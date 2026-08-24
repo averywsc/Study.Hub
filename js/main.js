@@ -387,10 +387,35 @@ if (shAdminToggle && shAdminPanel) {
     shAdminLoginBtn.addEventListener('click', function () {
         const key = shAdminPassword.value.trim();
         if (!key) return;
-        sessionStorage.setItem('adminKey', key);
-        shAdminPassword.value = '';
-        setAdminUI(true);
-        if (typeof renderListings === 'function') renderListings();
+
+        sessionStorage.removeItem('adminKey');
+        shAdminStatus.textContent = 'Checking...';
+
+        const formData = new FormData();
+        formData.append('admin_key', key);
+
+        fetch('https://projectspace.nz/xbbhjgpp/verify-admin.php', {
+            method: 'POST',
+            body: formData
+        })
+            .then(function (response) { return response.json(); })
+            .then(function (result) {
+                if (result.success) {
+                    sessionStorage.setItem('adminKey', key);
+                    shAdminPassword.value = '';
+                    setAdminUI(true);
+                    if (typeof renderListings === 'function') renderListings();
+                } else {
+                    setAdminUI(false);
+                    shAdminStatus.textContent = 'Incorrect password.';
+                    shAdminPassword.value = '';
+                }
+            })
+            .catch(function () {
+                setAdminUI(false);
+                shAdminStatus.textContent = 'Could not reach the server.';
+                shAdminPassword.value = '';
+            });
     });
 
     shAdminLogoutBtn.addEventListener('click', function () {
