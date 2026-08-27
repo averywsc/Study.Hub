@@ -36,4 +36,4 @@ Live site: https://projectspace.nz/xbbhjgpp/index.html
 * **Sprint 4 (Community):** Group listings, filters, posting form, accessibility/settings features, and a live database backend with admin/owner delete controls complete.
 
 ### Made by
-Avery Beuth
+Avery Beuth :)
