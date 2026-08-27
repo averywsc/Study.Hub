@@ -1615,3 +1615,25 @@ body.dark-mode .prompt-section .resource-subheading {
 .listing-delete-btn {
     margin-left: 18px;
 }
+
+.resource-search-bar {
+    margin-bottom: 2rem;
+}
+
+.resource-search-bar input {
+    width: 100%;
+    max-width: 400px;
+    padding: 0.7rem 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-family: var(--font-clean);
+    color: var(--text-main);
+    background-color: var(--white-base);
+}
+
+body.dark-mode .resource-search-bar input {
+    background-color: #1a202c;
+    color: #e2e8f0;
+    border-color: #4a5568;
+}

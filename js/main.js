@@ -815,11 +815,11 @@ if (standardSelect) {
                 ],
                 years: [
                     {
-                        year: "2022",
-                        exam: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2022/91098-exm-2022.pdf",
-                        excellence: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2022/91098-exp-2022-excellence.pdf",
-                        merit: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2022/91098-exp-2022-merit.pdf",
-                        achieved: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2022/91098-exp-2022-achievement.pdf"
+                        year: "2025",
+                        exam: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2025/91098-exm-2025.pdf",
+                        excellence: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2025/91098-exp-2025-excellence.pdf",
+                        merit: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2025/91098-exp-2025-merit.pdf",
+                        achieved: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2025/91098-exp-2025-achievement.pdf"
                     }
                 ]
             },
@@ -942,9 +942,8 @@ if (standardSelect) {
                     {
                         year: "2023",
                         exam: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2023/91233-mex-2023.pdf",
-                        excellence: "http://nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2023/91233-exp-2023-excellence.pdf",
-                        merit: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2023/91233-exp-2023-merit.pdf",
-                        achieved: "http://nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2023/91233-exp-2023-achievement.pdf"
+                        excellence: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2023/91233-exp-2023-excellence.pdf",
+                        achieved: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exemplars/2023/91233-exp-2023-achievement.pdf"
                     }
                 ]
             }
@@ -963,9 +962,7 @@ if (standardSelect) {
                     {
                         year: "2025",
                         exam: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2025/91261-exm-2025.pdf",
-                        excellence: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2025/91261-frm-2025.pdf",
-                        merit: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2025/91261-frm-2025.pdf",
-                        achieved: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2025/91261-frm-2025.pdf"
+                        formula: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2025/91261-frm-2025.pdf"
                     }
                 ]
             },
@@ -981,17 +978,11 @@ if (standardSelect) {
                 years: [
                     {
                         year: "2025",
-                        exam: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2025/91262-exm-2025.pdf",
-                        excellence: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2025/91262-exm-2025.pdf",
-                        merit: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2025/91262-exm-2025.pdf",
-                        achieved: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2025/91262-exm-2025.pdf"
+                        exam: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2025/91262-exm-2025.pdf"
                     },
                     {
                         year: "2024",
-                        exam: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2024/91262-exm-2024.pdf",
-                        excellence: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2024/91262-exm-2024.pdf",
-                        merit: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2024/91262-exm-2024.pdf",
-                        achieved: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2024/91262-exm-2024.pdf"
+                        exam: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2024/91262-exm-2024.pdf"
                     }
                 ]
             },
@@ -1007,17 +998,11 @@ if (standardSelect) {
                 years: [
                     {
                         year: "2025",
-                        exam: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2025/91267-exm-2025.pdf",
-                        excellence: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2025/91267-exm-2025.pdf",
-                        merit: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2025/91267-exm-2025.pdf",
-                        achieved: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2025/91267-exm-2025.pdf"
+                        exam: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2025/91267-exm-2025.pdf"
                     },
                     {
                         year: "2024",
-                        exam: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2024/91267-exm-2024.pdf",
-                        excellence: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2024/91267-exm-2024.pdf",
-                        merit: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2024/91267-exm-2024.pdf",
-                        achieved: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2024/91267-exm-2024.pdf"
+                        exam: "https://www.nzqa.govt.nz/nqfdocs/ncea-resource/exams/2024/91267-exm-2024.pdf"
                     }
                 ]
             }
@@ -1065,28 +1050,53 @@ if (standardSelect) {
     };
 
     function renderStandard() {
-        const code = standardSelect.value;
-        const data = standardsData[subjectKey][code];
+    const code = standardSelect.value;
+    const data = standardsData[subjectKey][code];
 
-        notesCard.innerHTML =
-            '<h3>' + data.title + '</h3>' +
-            '<ul class="notes-list">' +
-            data.notes.map(function (n) { return '<li>' + n + '</li>'; }).join('') +
-            '</ul>';
+    notesCard.innerHTML =
+        '<h3>' + data.title + '</h3>' +
+        '<ul class="notes-list">' +
+        data.notes.map(function (n) { return '<li>' + n + '</li>'; }).join('') +
+        '</ul>';
 
-        practiceButtons.innerHTML = data.years.map(function (y) {
-            return '<div class="year-block">' +
-                '<h4 class="year-label">' + y.year + '</h4>' +
-                '<div class="year-links">' +
-                    '<a href="' + y.exam + '" target="_blank" class="btn">Exam Paper</a>' +
-                    '<a href="' + y.excellence + '" target="_blank" class="btn-secondary">Excellence Exemplar</a>' +
-                    '<a href="' + y.merit + '" target="_blank" class="btn-secondary">Merit Exemplar</a>' +
-                    '<a href="' + y.achieved + '" target="_blank" class="btn-secondary">Achieved Exemplar</a>' +
-                '</div>' +
-            '</div>';
-        }).join('');
-    }
+    practiceButtons.innerHTML = data.years.map(function (y) {
+        let links = '<a href="' + y.exam + '" target="_blank" class="btn">Exam Paper</a>';
+        if (y.formula) {
+            links += '<a href="' + y.formula + '" target="_blank" class="btn-secondary">Formula Sheet</a>';
+        }
+        if (y.excellence) {
+            links += '<a href="' + y.excellence + '" target="_blank" class="btn-secondary">Excellence Exemplar</a>';
+        }
+        if (y.merit) {
+            links += '<a href="' + y.merit + '" target="_blank" class="btn-secondary">Merit Exemplar</a>';
+        }
+        if (y.achieved) {
+            links += '<a href="' + y.achieved + '" target="_blank" class="btn-secondary">Achieved Exemplar</a>';
+        }
+        return '<div class="year-block"><h4 class="year-label">' + y.year + '</h4><div class="year-links">' + links + '</div></div>';
+    }).join('');
+}
 
     standardSelect.addEventListener('change', renderStandard);
     renderStandard();
+}
+
+const resourceSearch = document.getElementById('resourceSearch');
+
+if (resourceSearch) {
+    const resourceBoxes = document.querySelectorAll('.resource-box');
+
+    resourceSearch.addEventListener('input', function () {
+        const query = resourceSearch.value.toLowerCase().trim();
+
+        resourceBoxes.forEach(function (box) {
+            const text = box.textContent.toLowerCase();
+            box.style.display = text.includes(query) ? '' : 'none';
+        });
+
+        document.querySelectorAll('.resource-group').forEach(function (group) {
+            const visibleBoxes = group.querySelectorAll('.resource-box:not([style*="display: none"])');
+            group.style.display = visibleBoxes.length > 0 ? '' : 'none';
+        });
+    });
 }
